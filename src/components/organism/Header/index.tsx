@@ -5,7 +5,7 @@ import React from "react";
 
 const Header: React.FC<BasePorps> = () => {
   return (
-    <div className="flex justify-between items-center h-16 px-5">
+    <div className="flex justify-between items-center bg-black h-16 px-5">
       <NavigationButton />
       <CartButton />
     </div>
