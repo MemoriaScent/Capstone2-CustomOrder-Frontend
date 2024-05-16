@@ -4,13 +4,7 @@ import { blackColorStyle } from "@/styles/color";
 import { whiteFontColor } from "@/styles/fontColor";
 import React from "react";
 
-interface FooterProps {
-  children: React.ReactNode;
-  css: string;
-  className: string;
-}
-
-const Footer: React.FC<FooterProps> = ({ children, css, className }) => {
+const Footer = () => {
   return (
     <div style={colorStyle} className="flex justify-between px-20 pb-20 pt-10">
       <CompanyInfo css={colorStyle} className="" />
