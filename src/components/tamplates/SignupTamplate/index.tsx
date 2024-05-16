@@ -1,17 +1,17 @@
 "use client";
 import Footer from "@/components/organism/Footer";
 import Header from "@/components/organism/Header";
-import Signin from "@/components/organism/SignIn";
+import Signup from "@/components/organism/Signup";
 import React from "react";
 
-const SigninTamplate = () => {
+const SignupTamplate = () => {
   return (
     <div>
       <Header />
-      <Signin />
+      <Signup />
       <Footer />
     </div>
   );
 };
 
-export default SigninTamplate;
+export default SignupTamplate;

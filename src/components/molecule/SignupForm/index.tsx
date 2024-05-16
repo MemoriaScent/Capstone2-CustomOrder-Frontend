@@ -5,7 +5,7 @@ import { pretendardAuthLabelFontStyle } from "@/styles/font";
 import { whiteFontColor } from "@/styles/fontColor";
 import React from "react";
 
-const SigninForm = () => {
+const SignupForm = () => {
   return (
     <div>
       <div className="flex flex-col mb-4">
@@ -109,4 +109,4 @@ const CheckButtonLabel = {
   ...whiteFontColor,
 };
 
-export default SigninForm;
+export default SignupForm;

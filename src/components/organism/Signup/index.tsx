@@ -2,20 +2,20 @@
 import Button from "@/components/atoms/Button";
 import Divider from "@/components/atoms/Divider";
 import AuthTitle from "@/components/molecule/AuthTitle";
-import SigninForm from "@/components/molecule/SigninForm";
+import SignupForm from "@/components/molecule/SignupForm";
 import { whiteColorStyle } from "@/styles/color";
 import { pretendardAuthTitleFontStyle } from "@/styles/font";
 import { blackFontColor } from "@/styles/fontColor";
 import React from "react";
 
-const Signin = () => {
+const Signup = () => {
   return (
-    <div
+    <form
       style={{ ...colorStyle, ...boxStyle }}
       className="flex flex-col justify-center items-center pb-20 pt-30"
     >
-      <AuthTitle css={authTitleStyle}>SIGN IN</AuthTitle>
-      <SigninForm />
+      <AuthTitle css={authTitleStyle}>SIGN UP</AuthTitle>
+      <SignupForm />
       <Divider />
       <Button
         onClick={() => {}}
@@ -23,7 +23,7 @@ const Signin = () => {
       >
         회원가입
       </Button>
-    </div>
+    </form>
   );
 };
 
@@ -43,4 +43,4 @@ const colorStyle = {
   ...whiteColorStyle,
 };
 
-export default Signin;
+export default Signup;
