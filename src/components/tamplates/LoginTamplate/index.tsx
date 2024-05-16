@@ -1,5 +1,5 @@
 "use client";
-import Footer from "@/components/organism/footer";
+import Footer from "@/components/organism/Footer";
 import Header from "@/components/organism/Header";
 import LoginOrganism from "@/components/organism/Login";
 import React from "react";

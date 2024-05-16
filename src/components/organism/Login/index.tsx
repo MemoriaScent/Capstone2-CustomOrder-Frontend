@@ -1,22 +1,14 @@
 "use client";
 import Button from "@/components/atoms/Button";
 import Divider from "@/components/atoms/Divider";
-import Input from "@/components/atoms/Input";
-import Label from "@/components/atoms/Label";
 import AuthTitle from "@/components/molecule/AuthTitle";
-import LoginFrom from "@/components/molecule/LoginFrom";
+import LoginFrom from "@/components/molecule/LoginForm";
 import { whiteColorStyle } from "@/styles/color";
 import { pretendardAuthTitleFontStyle } from "@/styles/font";
 import { blackFontColor } from "@/styles/fontColor";
 import React from "react";
 
-interface LoginProps {
-  children: React.ReactNode;
-  css: string;
-  className: string;
-}
-
-const LoginOrganism: React.FC<LoginProps> = ({ children, css, className }) => {
+const LoginOrganism = () => {
   return (
     <div
       style={{ ...colorStyle, ...boxStyle }}
