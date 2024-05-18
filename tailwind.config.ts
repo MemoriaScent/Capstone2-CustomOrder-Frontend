@@ -20,9 +20,19 @@ const config: Config = {
         "369": "369px",
         "400": "400px",
         "500": "500px",
+        "570": "570px",
+      },
+      height: {
+        "250": "250px",
       },
       colors: {
         "custom-orange": "#FF7A00",
+      },
+      padding: {
+        "100": "100px",
+      },
+      border: {
+        "1": "1px",
       },
     },
   },
