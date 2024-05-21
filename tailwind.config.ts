@@ -44,6 +44,7 @@ const config: Config = {
         "50": "50px",
         "60": "60px",
         "200": "200px",
+        "300": "300px",
       },
       colors: {
         "custom-gray": "#F7F7F7",
@@ -55,6 +56,8 @@ const config: Config = {
       },
       margin: {
         "100": "100px",
+        "45": "45px",
+        "60": "60px",
       },
       border: {
         "1": "1px",
