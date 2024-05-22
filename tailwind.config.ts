@@ -36,6 +36,7 @@ const config: Config = {
         "194": "194px",
         "218": "218px",
         "1136": "1136px",
+        "100vw": "100vw",
       },
       height: {
         "250": "250px",
@@ -45,6 +46,8 @@ const config: Config = {
         "60": "60px",
         "200": "200px",
         "300": "300px",
+        "1400": "1400px",
+        "45vw": "44.9vw",
       },
       colors: {
         "custom-gray": "#F7F7F7",
@@ -53,11 +56,17 @@ const config: Config = {
       padding: {
         "100": "100px",
         "200": "200px",
+        "70": "70px",
       },
       margin: {
         "100": "100px",
         "45": "45px",
         "60": "60px",
+        "44vw": "44vw",
+        "90": "90px",
+        "110": "110px",
+        "150": "150px",
+        "22vw": "22vw",
       },
       border: {
         "1": "1px",

@@ -101,3 +101,10 @@ export const climateCrisisBackGroundFontStyle = {
   fontWeight: "400",
   lineHeight: "252.7px",
 };
+
+export const pretendardHomeMentFontStyle = {
+  fontFamily: "Pretendard-Regular",
+  fontSize: "40px",
+  fontWeight: "900",
+  lineHeight: "47.73px",
+};
