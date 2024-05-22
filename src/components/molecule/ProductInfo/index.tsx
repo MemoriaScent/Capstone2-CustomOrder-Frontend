@@ -1,4 +1,5 @@
 import Label from "@/components/atoms/Label";
+import Image from "next/image";
 
 const ProductInfo = () => {
   return (
@@ -12,7 +13,11 @@ const ProductInfo = () => {
         <Label className="w-263 flex justify-center items-center">가격</Label>
       </div>
       <div className="flex flex-row h-150 divide-x divide-black">
-        <image className="w-150"></image>
+        <div className="flex items-center justify-center p-5 w-150">
+          {/* 수정 필요! */}
+          <img width="60" height="auto" src="/HomeImage.png"></img>
+        </div>
+
         <Label className="w-560 flex justify-start items-center px-10">
           custom diffuser
         </Label>

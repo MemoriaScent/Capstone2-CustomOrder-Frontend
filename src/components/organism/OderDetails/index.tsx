@@ -1,3 +1,4 @@
+"use client";
 import OderInfo from "@/components/molecule/OderInfo";
 import OderInfoBtn from "@/components/molecule/OderInfoBtn";
 import ProductInfo from "@/components/molecule/ProductInfo";

@@ -1,6 +1,3 @@
-"use client";
-import Footer from "@/components/organism/Footer";
-import Header from "@/components/organism/Header";
 import TextInputForm from "@/components/organism/TextInputForm";
 
 const Props = {
@@ -13,9 +10,7 @@ const Props = {
 const OderCancelTamplate = () => {
   return (
     <div>
-      <Header />
       <TextInputForm {...Props} onClick={() => {}} />
-      <Footer />
     </div>
   );
 };

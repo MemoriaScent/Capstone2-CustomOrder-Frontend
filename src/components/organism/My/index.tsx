@@ -1,3 +1,4 @@
+"use client";
 import MyItem from "@/components/molecule/MyItem";
 
 const My = () => {
