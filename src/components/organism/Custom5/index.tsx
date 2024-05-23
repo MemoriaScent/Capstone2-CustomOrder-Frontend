@@ -3,7 +3,7 @@ import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import Label from "@/components/atoms/Label";
 
-const Custom4 = () => {
+const Custom5 = () => {
   return (
     <div className="flex flex-col mt-60 items-center">
       <Label className="text-center mb-2.5 textTest">
@@ -23,4 +23,4 @@ const Custom4 = () => {
   );
 };
 
-export default Custom4;
+export default Custom5;
