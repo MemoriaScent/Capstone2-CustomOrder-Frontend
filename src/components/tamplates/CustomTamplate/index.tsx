@@ -3,11 +3,13 @@ import Custom1 from "@/components/organism/Custom1";
 import Custom2 from "@/components/organism/Custom2";
 import Custom3 from "@/components/organism/Custom3";
 import Custom4 from "@/components/organism/Custom4";
+// import Custom5 from "@/components/organism/Custom5";
+import Custom6 from "@/components/organism/Custom6";
 import CustomBGImage from "@/components/organism/CustomBGImage";
 import { useEffect, useState } from "react";
 
 const CustomTamplate = () => {
-  const [level, setLevel] = useState(4);
+  const [level, setLevel] = useState(6);
   const [content, setContent] = useState(<Custom3></Custom3>);
 
   useEffect(() => {
@@ -25,10 +27,10 @@ const CustomTamplate = () => {
         setContent(<Custom4></Custom4>);
         break;
       case 5:
-        setContent(<Custom1></Custom1>);
+        setContent(<Custom5></Custom5>);
         break;
       case 6:
-        setContent(<Custom1></Custom1>);
+        setContent(<Custom6></Custom6>);
         break;
     }
   }, [level]);
