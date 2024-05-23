@@ -1,11 +1,12 @@
 "use client";
 import Custom1 from "@/components/organism/Custom1";
+import Custom2 from "@/components/organism/Custom2";
 import CustomBGImage from "@/components/organism/CustomBGImage";
 import { useEffect, useState } from "react";
 
 const CustomTamplate = () => {
-  const [level, setLevel] = useState(1);
-  const [content, setContent] = useState(<Custom1></Custom1>);
+  const [level, setLevel] = useState(2);
+  const [content, setContent] = useState(<Custom2></Custom2>);
 
   useEffect(() => {
     switch (level) {
@@ -13,7 +14,7 @@ const CustomTamplate = () => {
         setContent(<Custom1></Custom1>);
         break;
       case 2:
-        setContent(<Custom1></Custom1>);
+        setContent(<Custom2></Custom2>);
         break;
       case 3:
         setContent(<Custom1></Custom1>);
