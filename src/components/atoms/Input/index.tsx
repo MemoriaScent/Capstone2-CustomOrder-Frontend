@@ -21,7 +21,7 @@ const Input: React.FC<InputProps> = ({
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className={`px-4 ${className}`}
+      className={`px-4 ${className} align-baseline`}
     />
   );
 };
