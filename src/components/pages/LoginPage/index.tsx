@@ -1,4 +1,4 @@
-import LoginTamplate from "@/components/tamplates/LoginTamplate";
+import LoginTamplate from "@/components/tamplates/LoginTemplate";
 import React from "react";
 
 const LoginPage = () => {

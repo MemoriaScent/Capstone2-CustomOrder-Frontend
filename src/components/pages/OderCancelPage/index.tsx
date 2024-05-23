@@ -1,4 +1,4 @@
-import OderCancelTamplate from "@/components/tamplates/OderCancelTamplate";
+import OderCancelTamplate from "@/components/tamplates/OderCancelTemplate";
 
 const OderCancelPage = () => {
   return (
