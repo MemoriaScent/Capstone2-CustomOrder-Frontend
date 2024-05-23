@@ -2,11 +2,12 @@
 import Custom1 from "@/components/organism/Custom1";
 import Custom2 from "@/components/organism/Custom2";
 import Custom3 from "@/components/organism/Custom3";
+import Custom4 from "@/components/organism/Custom4";
 import CustomBGImage from "@/components/organism/CustomBGImage";
 import { useEffect, useState } from "react";
 
 const CustomTamplate = () => {
-  const [level, setLevel] = useState(3);
+  const [level, setLevel] = useState(4);
   const [content, setContent] = useState(<Custom3></Custom3>);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const CustomTamplate = () => {
         setContent(<Custom3></Custom3>);
         break;
       case 4:
-        setContent(<Custom1></Custom1>);
+        setContent(<Custom4></Custom4>);
         break;
       case 5:
         setContent(<Custom1></Custom1>);
