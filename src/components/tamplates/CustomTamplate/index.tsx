@@ -9,7 +9,7 @@ import CustomBGImage from "@/components/organism/CustomBGImage";
 import { useEffect, useState } from "react";
 
 const CustomTamplate = () => {
-  const [level, setLevel] = useState(4);
+  const [level, setLevel] = useState(1);
   const [content, setContent] = useState(<Custom3></Custom3>);
 
   useEffect(() => {
@@ -39,8 +39,8 @@ const CustomTamplate = () => {
     <div>
       <div className="relative w-100vw h-66vw">
         <CustomBGImage />
-        <div className="z-10 absolute w-full h-full flex justify-center">
-          <div className="flex flex-col items-center w-1300 h-45vw border-x border-t border-black bg-white">
+        <div className="absolute w-full h-full flex justify-center">
+          <div className=" flex flex-col items-center w-1300 h-45vw border-x border-t border-black bg-white">
             {content}
           </div>
         </div>

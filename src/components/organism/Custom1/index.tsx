@@ -4,7 +4,7 @@ import Label from "@/components/atoms/Label";
 
 const Custom1 = () => {
   return (
-    <div className="mt-180">
+    <div className="mt-180 z-10">
       <Label className="text-center mb-110">
         커스텀 디퓨저는 향기 인증 절차를 밟은 후 배송되는 제품으로 <br />
         제작부터 배송까지 약 4주 정도의 시간이 소요됩니다.

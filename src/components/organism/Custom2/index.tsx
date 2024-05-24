@@ -4,7 +4,7 @@ import Label from "@/components/atoms/Label";
 
 const Custom2 = () => {
   return (
-    <div className="mt-180">
+    <div className="mt-180 z-10">
       <Label className="text-center mb-110">
         향기로 담고 싶은 사진을 업로드해주세요
       </Label>

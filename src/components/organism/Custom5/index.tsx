@@ -5,7 +5,7 @@ import Label from "@/components/atoms/Label";
 
 const Custom5 = () => {
   return (
-    <div className="flex flex-col mt-60 items-center">
+    <div className="flex flex-col mt-60 items-center z-10">
       <Label className="text-center mb-2.5 textTest">
         향기에 이름을 붙여보세요
       </Label>
