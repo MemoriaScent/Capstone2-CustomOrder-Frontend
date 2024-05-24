@@ -1,9 +1,9 @@
-import Oder from "@/components/organism/Oder";
+import Order from "@/components/organism/Order";
 
 const OderTamplate = () => {
   return (
     <div>
-      <Oder />
+      <Order />
     </div>
   );
 };

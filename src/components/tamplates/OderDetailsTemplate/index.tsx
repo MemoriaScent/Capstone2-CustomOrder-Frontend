@@ -1,4 +1,4 @@
-import OderDetails from "@/components/organism/OderDetails";
+import OderDetails from "@/components/organism/OrderDetails";
 
 const OderDetailsTamplate = () => {
   return (
