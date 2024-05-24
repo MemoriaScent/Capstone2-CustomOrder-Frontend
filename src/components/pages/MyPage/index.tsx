@@ -1,4 +1,4 @@
-import MyTamplate from "@/components/tamplates/MyTamplate";
+import MyTamplate from "@/components/tamplates/MyTemplate";
 import React from "react";
 
 const MyPage = () => {

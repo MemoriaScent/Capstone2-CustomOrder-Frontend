@@ -1,6 +1,6 @@
 "use client";
-import OderInfo from "@/components/molecule/OderInfo";
-import OderInfoBtn from "@/components/molecule/OderInfoBtn";
+import OderInfo from "@/components/molecule/OrderInfo";
+import OderInfoBtn from "@/components/molecule/OrderInfoBtn";
 import ProductInfo from "@/components/molecule/ProductInfo";
 
 const OderDetails = () => {

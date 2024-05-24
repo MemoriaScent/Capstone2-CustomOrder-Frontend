@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
-import OderItem from "@/components/molecule/OderItem";
+import OderItem from "@/components/molecule/OrderItem";
 import { pretendardMenuLabelFontStyle } from "@/styles/font";
 
 const oderItemList = [
@@ -42,7 +42,7 @@ const oderItemList = [
   },
 ];
 
-const Oder = () => {
+const Order = () => {
   return (
     <div className="flex flex-col items-center pt-20 pb-200">
       <div className="w-1136 border border-black">
@@ -88,4 +88,4 @@ const Oder = () => {
   );
 };
 
-export default Oder;
+export default Order;
