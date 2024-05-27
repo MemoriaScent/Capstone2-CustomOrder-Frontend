@@ -1,11 +1,19 @@
+'use client'
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import Label from "@/components/atoms/Label";
 import { pretendardAuthLabelFontStyle } from "@/styles/font";
 import { whiteFontColor } from "@/styles/fontColor";
 import React from "react";
-
+import { useAtom } from "jotai";
+import { signupAtom } from "./JAtom";
+import useSignUp from "./useSignUp";
+import { CSSObject } from "@emotion/react";
 const SignupForm = () => {
+  const [signupData,setSignupData] = useAtom(signupAtom)
+  const {
+    handleclick
+  } = useSignUp()
   return (
     <div>
       <div className="flex flex-col mb-4">
@@ -14,7 +22,7 @@ const SignupForm = () => {
         </Label>
         <div className="flex flex-row justify-between">
           <Input className="border-x border-y border-solid border-black w-400 h-10" />
-          <Button css={CheckButtonLabel} className="bg-black w-90 h-10">
+          <Button css={CheckButtonLabel} onClick={handleclick} className="bg-black w-90 h-10">
             중복확인
           </Button>
         </div>

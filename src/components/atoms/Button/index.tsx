@@ -1,23 +1,25 @@
+/** @jsxImportSource @emotion/react */
+import { css, CSSObject } from "@emotion/react";
 import React from "react";
 
 interface ButtonProps {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
-  css?: string;
+  css?: CSSObject;
 }
 
 const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
   className,
-  css,
+  css: cssProp,
 }) => {
   return (
     <button
-      style={css}
+      css={css(cssProp)}
       onClick={onClick}
-      className={` px-4 rounded ${className}`}
+      className={`px-4 rounded ${className}`}
     >
       {children}
     </button>
