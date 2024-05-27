@@ -1,4 +1,4 @@
-import SignupTamplate from "@/components/tamplates/SignupTemplate";
+import SignupTamplate from "@/components/tamplates/Signuptemplate";
 import React from "react";
 
 const SignupPage = () => {

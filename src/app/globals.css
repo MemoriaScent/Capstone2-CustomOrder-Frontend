@@ -31,3 +31,21 @@
   line-height: 28.64px;
   text-align: center;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, main, footer {
+  width: 100%;
+}
+
+main {
+  flex: 1;
+}
