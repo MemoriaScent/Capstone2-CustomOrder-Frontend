@@ -5,7 +5,7 @@ import Label from "@/components/atoms/Label";
 
 const Custom4 = () => {
   return (
-    <div className="flex flex-col mt-60 items-center">
+    <div className="flex flex-col mt-60 items-center z-10">
       <Label className="text-center textTest">
         당신의 향기 취향에 대해 이야기해주세요
       </Label>

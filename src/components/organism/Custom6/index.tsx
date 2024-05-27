@@ -6,7 +6,7 @@ import Keyword from "@/components/molecule/Keyword";
 
 const Custom6 = () => {
   return (
-    <div className="flex flex-col mt-60 items-center">
+    <div className="flex flex-col mt-60 items-center z-10">
       <Label className="text-center mb-2.5 textTest">
         향기의 키워드를 정리해봤어요
       </Label>

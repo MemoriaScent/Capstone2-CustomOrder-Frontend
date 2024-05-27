@@ -12,7 +12,7 @@ const CustomBGImage = () => {
 export default CustomBGImage;
 
 const bgOrangeStyle = {
-  zIndex: "11",
+  zIndex: "1",
   width: "0px",
   height: "0px",
   top: "21.6vw",
@@ -23,7 +23,7 @@ const bgOrangeStyle = {
 };
 
 const bgBlackStyle = {
-  zIndex: "12",
+  zIndex: "2",
   width: "0px",
   height: "0px",
   top: "21.6vw",

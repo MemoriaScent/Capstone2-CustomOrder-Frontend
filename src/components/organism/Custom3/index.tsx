@@ -5,7 +5,7 @@ import Label from "@/components/atoms/Label";
 
 const Custom3 = () => {
   return (
-    <div className="flex flex-col mt-60 items-center">
+    <div className="flex flex-col mt-60 items-center z-10">
       <Label className="text-center textTest">
         항기에 담고 싶은 내용을 이야기해주세요
       </Label>
