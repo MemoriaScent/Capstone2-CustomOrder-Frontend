@@ -1,3 +1,4 @@
+'use client'
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
 import {

@@ -12,7 +12,8 @@ import { CSSObject } from "@emotion/react";
 const SignupForm = () => {
   const [signupData,setSignupData] = useAtom(signupAtom)
   const {
-    handleclick
+    handleclick,
+    handleEmail
   } = useSignUp()
   return (
     <div>
@@ -21,7 +22,9 @@ const SignupForm = () => {
           이메일
         </Label>
         <div className="flex flex-row justify-between">
-          <Input className="border-x border-y border-solid border-black w-400 h-10" />
+          <Input onChange={(e)=>{
+            handleEmail(e)
+          }} className="border-x border-y border-solid border-black w-400 h-10" />
           <Button css={CheckButtonLabel} onClick={handleclick} className="bg-black w-90 h-10">
             중복확인
           </Button>
