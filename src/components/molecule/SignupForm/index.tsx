@@ -7,10 +7,16 @@ import React, { useState } from "react";
 import DaumPostcodeModal from "../DaumPostcodeModal";
 
 const SignupForm = () => {
+  const [address, setAddress] = useState({ zonecode: "", address: "" });
   const [showPostCodeModal, setShowPostCodeModal] = useState(false);
   const clickPostCodeModal = (event) => {
     event.preventDefault();
     console.log(showPostCodeModal);
+    setShowPostCodeModal(!showPostCodeModal);
+  };
+  const completeAddress = (zonecode: string, address: string) => {
+    setAddress({ zonecode, address });
+
     setShowPostCodeModal(!showPostCodeModal);
   };
   return (
@@ -86,6 +92,7 @@ const SignupForm = () => {
               type="text"
               placeholder="우편번호"
               className="border-x border-y border-solid border-black w-369 h-10"
+              value={address.zonecode}
             />
 
             <Button
@@ -95,13 +102,17 @@ const SignupForm = () => {
               우편번호 찾기
             </Button>
             {showPostCodeModal && (
-              <DaumPostcodeModal clickPostCodeModal={clickPostCodeModal} />
+              <DaumPostcodeModal
+                completeAddress={completeAddress}
+                clickPostCodeModal={clickPostCodeModal}
+              />
             )}
           </div>
           <Input
             type="text"
             placeholder="주소"
             className="border-x border-y border-solid border-black w-500 h-10 mb-4"
+            value={address.address}
           />
           <Input
             type="text"
