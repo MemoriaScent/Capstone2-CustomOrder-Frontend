@@ -4,15 +4,9 @@ interface ButtonProps {
   children: React.ReactNode;
   onClick: () => void;
   className?: string;
-  css?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  children,
-  onClick,
-  className,
-  css,
-}) => {
+const Button: React.FC<ButtonProps> = ({ children, onClick, className }) => {
   return (
     <button onClick={onClick} className={` px-4 rounded-none ${className}`}>
       {children}
