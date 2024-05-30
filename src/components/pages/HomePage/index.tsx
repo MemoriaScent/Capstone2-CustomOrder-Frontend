@@ -2,8 +2,10 @@
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
 import { climateCrisisBackGroundFontStyle } from "@/styles/font";
+import { useRouter } from "next/navigation";
 
 const HomePage = () => {
+  const router = useRouter();
   return (
     <div>
       <div className="relative w-100vw h-45vw">
@@ -48,7 +50,9 @@ const HomePage = () => {
         </Label>
         <Button
           className="border-2 border-white text-white w-200 h-50 rounded-full mt-10"
-          onClick={() => {}}
+          onClick={() => {
+            router.push("/custom");
+          }}
         >
           <Label className="pretendardSemiBoldFont-20">추억 담기</Label>
         </Button>
