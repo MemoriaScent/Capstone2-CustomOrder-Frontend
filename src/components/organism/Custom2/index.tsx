@@ -1,8 +1,13 @@
 "use client";
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
+import React from "react";
 
-const Custom2 = () => {
+interface CustomProps {
+  nextLevel: () => void;
+}
+
+const Custom2: React.FC<CustomProps> = ({ nextLevel }) => {
   return (
     <div className="mt-180 z-10">
       <Label className="text-center mb-110">
@@ -13,7 +18,10 @@ const Custom2 = () => {
         <Button className="w-300 h-50 bg-black text-white rounded-none mb-4">
           사진 업로드 하기
         </Button>
-        <Button className="w-300 h-50 bg-white text-black rounded-none border border-black">
+        <Button
+          className="w-300 h-50 bg-white text-black rounded-none border border-black"
+          onClick={nextLevel}
+        >
           건너뛰기
         </Button>
       </div>

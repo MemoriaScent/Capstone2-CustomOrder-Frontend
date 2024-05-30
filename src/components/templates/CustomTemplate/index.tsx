@@ -10,27 +10,30 @@ import { useEffect, useState } from "react";
 
 const CustomTamplate = () => {
   const [level, setLevel] = useState(1);
-  const [content, setContent] = useState(<Custom3></Custom3>);
+  const [content, setContent] = useState();
+  const nextLevel = () => {
+    setLevel(level + 1);
+  };
 
   useEffect(() => {
     switch (level) {
       case 1:
-        setContent(<Custom1></Custom1>);
+        setContent(<Custom1 nextLevel={nextLevel}></Custom1>);
         break;
       case 2:
-        setContent(<Custom2></Custom2>);
+        setContent(<Custom2 nextLevel={nextLevel}></Custom2>);
         break;
       case 3:
-        setContent(<Custom3></Custom3>);
+        setContent(<Custom3 nextLevel={nextLevel}></Custom3>);
         break;
       case 4:
-        setContent(<Custom4></Custom4>);
+        setContent(<Custom4 nextLevel={nextLevel}></Custom4>);
         break;
       case 5:
-        setContent(<Custom5></Custom5>);
+        setContent(<Custom5 nextLevel={nextLevel}></Custom5>);
         break;
       case 6:
-        setContent(<Custom6></Custom6>);
+        setContent(<Custom6 nextLevel={nextLevel}></Custom6>);
         break;
     }
   }, [level]);

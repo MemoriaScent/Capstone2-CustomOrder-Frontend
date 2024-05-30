@@ -1,10 +1,14 @@
 "use client";
 import Button from "@/components/atoms/Button";
-import Input from "@/components/atoms/Input";
 import Label from "@/components/atoms/Label";
 import Keyword from "@/components/molecule/Keyword";
+import React from "react";
 
-const Custom6 = () => {
+interface CustomProps {
+  nextLevel: () => void;
+}
+
+const Custom6: React.FC<CustomProps> = ({ nextLevel }) => {
   return (
     <div className="flex flex-col mt-60 items-center z-10">
       <Label className="text-center mb-2.5 textTest">
@@ -27,7 +31,10 @@ const Custom6 = () => {
           </div>
         </div>
       </div>
-      <Button className="w-300 h-50 bg-black text-white rounded-none mt-60">
+      <Button
+        className="w-300 h-50 bg-black text-white rounded-none mt-60"
+        onClick={nextLevel}
+      >
         향기 담기
       </Button>
     </div>
