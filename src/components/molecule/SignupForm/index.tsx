@@ -3,9 +3,16 @@ import Input from "@/components/atoms/Input";
 import Label from "@/components/atoms/Label";
 import { pretendardAuthLabelFontStyle } from "@/styles/font";
 import { whiteFontColor } from "@/styles/fontColor";
-import React from "react";
+import React, { useState } from "react";
+import DaumPostcodeModal from "../DaumPostcodeModal";
 
 const SignupForm = () => {
+  const [showPostCodeModal, setShowPostCodeModal] = useState(false);
+  const clickPostCodeModal = (event) => {
+    event.preventDefault();
+    console.log(showPostCodeModal);
+    setShowPostCodeModal(!showPostCodeModal);
+  };
   return (
     <div>
       <div className="flex flex-col mb-4">
@@ -80,9 +87,16 @@ const SignupForm = () => {
               placeholder="우편번호"
               className="border-x border-y border-solid border-black w-369 h-10"
             />
-            <Button className="w-121 h-10 bg-black" css={CheckButtonLabel}>
+
+            <Button
+              className="w-121 h-10 bg-black text-white"
+              onClick={clickPostCodeModal}
+            >
               우편번호 찾기
             </Button>
+            {showPostCodeModal && (
+              <DaumPostcodeModal clickPostCodeModal={clickPostCodeModal} />
+            )}
           </div>
           <Input
             type="text"
