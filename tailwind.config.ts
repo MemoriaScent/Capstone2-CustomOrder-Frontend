@@ -84,6 +84,7 @@ const config: Config = {
         "22vw": "22vw",
         "50": "50px",
         "180": "180px",
+        "30": "30px",
       },
       border: {
         "1": "1px",

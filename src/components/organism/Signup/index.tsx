@@ -14,7 +14,7 @@ const Signup = () => {
       style={{ ...colorStyle, ...boxStyle }}
       className="flex flex-col justify-center items-center pb-20 pt-30"
     >
-      <AuthTitle css={authTitleStyle}>SIGN UP</AuthTitle>
+      <AuthTitle>SIGN UP</AuthTitle>
       <SignupForm />
       <Divider />
       <Button
@@ -25,12 +25,6 @@ const Signup = () => {
       </Button>
     </form>
   );
-};
-
-const authTitleStyle = {
-  marginBottom: "30px",
-  textAlign: "center",
-  ...pretendardAuthTitleFontStyle,
 };
 
 const boxStyle = {
