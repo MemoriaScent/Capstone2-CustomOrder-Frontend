@@ -14,11 +14,7 @@ const Button: React.FC<ButtonProps> = ({
   css,
 }) => {
   return (
-    <button
-      style={css}
-      onClick={onClick}
-      className={` px-4 rounded ${className}`}
-    >
+    <button onClick={onClick} className={` px-4 rounded-none ${className}`}>
       {children}
     </button>
   );
