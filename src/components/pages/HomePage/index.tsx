@@ -1,14 +1,7 @@
 "use client";
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
-import {
-  climateCrisisBackGroundFontStyle,
-  pretendardAuthButtonFontStyle,
-  pretendardCartFontStyle,
-  pretendardHomeMentFontStyle,
-  pretendardHomeSubTitleFontStyle,
-  pretendardHomeTitleFontStyle,
-} from "@/styles/font";
+import { climateCrisisBackGroundFontStyle } from "@/styles/font";
 
 const HomePage = () => {
   return (
