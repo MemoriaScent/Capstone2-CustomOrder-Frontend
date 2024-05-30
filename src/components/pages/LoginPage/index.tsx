@@ -1,10 +1,10 @@
-import LoginTamplate from "@/components/tamplates/LoginTemplate";
+import LoginTemplate from "@/components/templates/LoginTemplate";
 import React from "react";
 
 const LoginPage = () => {
   return (
     <div>
-      <LoginTamplate />
+      <LoginTemplate />
     </div>
   );
 };

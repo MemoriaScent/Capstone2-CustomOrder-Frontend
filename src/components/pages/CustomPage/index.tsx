@@ -1,9 +1,9 @@
-import CustomTamplate from "@/components/tamplates/CustomTemplate";
+import CustomTemplate from "@/components/templates/CustomTemplate";
 
 const CustomPage = () => {
   return (
     <div>
-      <CustomTamplate></CustomTamplate>
+      <CustomTemplate></CustomTemplate>
     </div>
   );
 };

@@ -1,10 +1,10 @@
-import SignupTamplate from "@/components/tamplates/Signuptemplate";
+import SignupTemplate from "@/components/templates/Signuptemplate";
 import React from "react";
 
 const SignupPage = () => {
   return (
     <div>
-      <SignupTamplate />
+      <SignupTemplate />
     </div>
   );
 };
