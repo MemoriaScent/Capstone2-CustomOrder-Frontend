@@ -1,10 +1,10 @@
-import MyTamplate from "@/components/tamplates/MyTemplate";
+import MyTemplate from "@/components/templates/MyTemplate";
 import React from "react";
 
 const MyPage = () => {
   return (
     <div>
-      <MyTamplate></MyTamplate>
+      <MyTemplate></MyTemplate>
     </div>
   );
 };

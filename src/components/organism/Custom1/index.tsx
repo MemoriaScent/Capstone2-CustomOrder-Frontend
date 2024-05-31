@@ -1,8 +1,13 @@
 "use client";
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
+import React from "react";
 
-const Custom1 = () => {
+interface CustomProps {
+  nextLevel: () => void;
+}
+
+const Custom1: React.FC<CustomProps> = ({ nextLevel }) => {
   return (
     <div className="mt-180 z-10">
       <Label className="text-center mb-110">
@@ -12,7 +17,10 @@ const Custom1 = () => {
         이를 인지하셨고 계속하여 구매를 원하시는 경우 “네” 버튼을 눌러주세요.
       </Label>
       <div className="flex flex-col items-center">
-        <Button className="w-300 h-50 bg-black text-white rounded-none mb-4">
+        <Button
+          className="w-300 h-50 bg-black text-white rounded-none mb-4"
+          onClick={nextLevel}
+        >
           네
         </Button>
         <Button className="w-300 h-50 bg-white text-black rounded-none border border-black">

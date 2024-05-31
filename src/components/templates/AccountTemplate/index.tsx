@@ -1,11 +1,11 @@
 import Account from "@/components/organism/Account";
 
-const AccountTamplate = () => {
+const AccountTemplate = () => {
   return (
     <div>
-      <Account/>
+      <Account />
     </div>
   );
 };
 
-export default AccountTamplate;
+export default AccountTemplate;

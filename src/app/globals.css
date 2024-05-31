@@ -53,6 +53,21 @@ main {
   flex: 1;
 }
 
+// pretendard Font
+.pretendardBoldFont-40 {
+  font-family: Pretendard;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 47.73px;
+}
+
+.pretendardSemiBoldFont-32 {
+  font-family: Pretendard;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 38.19px;
+}
+
 .pretendardSemiBoldFont-24 {
   font-family: Pretendard;
   font-size: 24px;
@@ -79,6 +94,13 @@ main {
   font-size: 20px;
   font-weight: 400;
   line-height: 23.87px;
+}
+
+.pretendardSemiBoldFont-18 {
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 21.48px;
 }
 
 .pretendardNormalFont-18 {

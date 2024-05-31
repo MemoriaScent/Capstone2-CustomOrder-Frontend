@@ -1,18 +1,12 @@
 
 import { useAtom } from "jotai";
-import { signupAtom, locationAtom } from "./JAtom";
+import { signupAtom, SignupState } from "./JAtom";
 import { useEffect } from "react";
 
 export default function useSignUp(){
     const [signUp,setSignup] = useAtom(signupAtom)
-    const [location,setLocation] = useAtom(locationAtom)
-    useEffect(() => {
-        const locationString = `[${location.zipcode}] ${location.addr} ${location.addrDet}`;
-        setSignup((prev) => ({
-            ...prev,
-            location: locationString,
-        }));
-    }, [location, setSignup]);
+
+    
     const handleclick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         console.log(signUp)
@@ -56,26 +50,17 @@ export default function useSignUp(){
         // signupAtom의 상태를 업데이트합니다.
         setSignup({ ...signUp, phone: newPhone });
       };
-      const handleZipcode = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLocation((prev) => ({
-            ...prev,
-            zipcode: e.target.value,
-        }));
-    };
-
-    const handleAddr = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLocation((prev) => ({
-            ...prev,
-            addr: e.target.value,
-        }));
-    };
-
-    const handleAddrDet = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLocation((prev) => ({
-            ...prev,
-            addrDet: e.target.value,
-        }));
-    };
+      
+      const handleArrDet = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newData = {
+            ...signUp,
+            location: {
+                ...signUp.location,
+                addrDet: e.target.value,
+            },
+        };
+        setSignup(newData);
+    }
     
 
     const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -107,9 +92,7 @@ export default function useSignUp(){
         handlePwChk,
         handleName,
         handlePhone,
-        handleAddr,
-        handleZipcode,
-        handleAddrDet,
-        handleClick
+        handleClick,
+        handleArrDet
     }
 }

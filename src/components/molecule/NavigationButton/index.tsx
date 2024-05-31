@@ -1,17 +1,15 @@
-"use client";
 import Button from "@/components/atoms/Button";
-import { BasePorps } from "@/components/Types";
 import React from "react";
 
-const NavigationButton: React.FC<BasePorps> = ({
-  children,
-  css,
-  className,
-}) => {
+interface NavigationButtonProps {
+  clickMenu: () => void;
+}
+
+const NavigationButton: React.FC<NavigationButtonProps> = ({ clickMenu }) => {
   return (
     <div>
       <Button
-        onClick={() => {}}
+        onClick={clickMenu}
         className={"w-5 h-3 border-y-2 rounded-none border-white"}
       ></Button>
     </div>

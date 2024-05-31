@@ -59,6 +59,8 @@ const config: Config = {
         "66vw": "66.5vw",
         "1000": "1000px",
         "600": "600px",
+        "800": "800px",
+        "740": "740px",
       },
       colors: {
         "custom-gray": "#F7F7F7",
@@ -84,6 +86,7 @@ const config: Config = {
         "22vw": "22vw",
         "50": "50px",
         "180": "180px",
+        "30": "30px",
       },
       border: {
         "1": "1px",

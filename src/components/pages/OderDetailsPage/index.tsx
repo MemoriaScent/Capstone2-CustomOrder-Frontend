@@ -1,9 +1,9 @@
-import OderDetailsTamplate from "@/components/tamplates/OderDetailsTemplate";
+import OderDetailsTemplate from "@/components/templates/OderDetailsTemplate";
 
 const OderDetailsPage = () => {
   return (
     <div>
-      <OderDetailsTamplate></OderDetailsTamplate>
+      <OderDetailsTemplate></OderDetailsTemplate>
     </div>
   );
 };

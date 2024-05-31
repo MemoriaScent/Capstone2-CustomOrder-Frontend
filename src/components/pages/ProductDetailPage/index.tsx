@@ -1,4 +1,4 @@
-import ProductDetailTemplate from "@/components/tamplates/ProductDetailTemplate";
+import ProductDetailTemplate from "@/components/templates/ProductDetailTemplate";
 import ProductDetailsProps from "@/components/Types/productDetail";
 import React from "react";
 

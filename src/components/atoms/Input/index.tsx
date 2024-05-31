@@ -6,6 +6,7 @@ interface InputProps {
   placeholder?: string;
   type?: string;
   className?: string;
+  canEdit?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -14,6 +15,7 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   type = "text",
   className,
+  canEdit = false,
 }) => {
   return (
     <input
@@ -22,6 +24,7 @@ const Input: React.FC<InputProps> = ({
       onChange={onChange}
       placeholder={placeholder}
       className={`px-4 ${className} align-baseline`}
+      readOnly={canEdit ? true : false}
     />
   );
 };

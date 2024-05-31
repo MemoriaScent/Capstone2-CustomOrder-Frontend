@@ -1,24 +1,32 @@
 import { atom } from "jotai";
-interface SignupState {
+export interface SignupState {
 	email: string;
 	pw: string;
-	pwcheck: string;
+	pwCheck: string;
 	name: string;
 	phone: string;
-	location: string;
+	location: {
+	  zonecode: string;
+	  address: string;
+	  addrDet: string;
+	};
   }
-
-export const signupAtom = atom({
-    email: "",
+  
+  export const signupAtom = atom<SignupState>({
+	email: "",
 	pw: "",
 	pwCheck: "",
 	name: "",
 	phone: "",
-	location: "",
-})
+	location: {
+	  zonecode: "",
+	  address: "",
+	  addrDet: "",
+	},
+  });
 export const locationAtom = atom(
 	{
-		zipcode: "",
+		zonecode: "",
 		addr : "",
 		addrDet : ""
 	}

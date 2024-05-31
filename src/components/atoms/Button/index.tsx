@@ -6,21 +6,11 @@ interface ButtonProps {
   children: React.ReactNode;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
-  css?: CSSObject;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  children,
-  onClick,
-  className,
-  css: cssProp,
-}) => {
+const Button: React.FC<ButtonProps> = ({ children, onClick, className }) => {
   return (
-    <button
-      css={css(cssProp)}
-      onClick={onClick}
-      className={`px-4 rounded ${className}`}
-    >
+    <button onClick={onClick} className={` px-4 ${className}`}>
       {children}
     </button>
   );

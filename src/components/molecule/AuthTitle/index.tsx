@@ -6,7 +6,9 @@ import React from "react";
 const AuthTitle: React.FC<BasePorps> = ({ children, css, className }) => {
   return (
     <div>
-      <Label css={css}>{children}</Label>
+      <Label className="mb-30 text-center pretendardSemiBoldFont-32">
+        {children}
+      </Label>
       <Divider />
     </div>
   );

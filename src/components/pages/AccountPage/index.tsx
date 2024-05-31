@@ -1,9 +1,9 @@
-import AccountTamplate from "@/components/tamplates/AccountTamplate";
+import AccountTemplate from "@/components/templates/AccountTemplate";
 
 const AccountPage = () => {
   return (
     <div>
-      <AccountTamplate></AccountTamplate>
+      <AccountTemplate></AccountTemplate>
     </div>
   );
 };

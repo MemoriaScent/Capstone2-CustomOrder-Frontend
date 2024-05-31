@@ -1,4 +1,3 @@
-"use client";
 import Button from "@/components/atoms/Button";
 import { BasePorps } from "@/components/Types";
 import { orangeColorStyle } from "@/styles/color";
