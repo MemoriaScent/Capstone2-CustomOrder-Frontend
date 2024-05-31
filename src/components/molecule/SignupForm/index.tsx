@@ -13,7 +13,15 @@ const SignupForm = () => {
   const [signupData,setSignupData] = useAtom(signupAtom)
   const {
     handleclick,
-    handleEmail
+    handleEmail,
+    handlePw,
+    handlePwChk,
+    handleName,
+    handlePhone,
+    handleAddr,
+    handleZipcode,
+    handleAddrDet,
+    
   } = useSignUp()
   return (
     <div>
@@ -35,6 +43,9 @@ const SignupForm = () => {
           비밀번호
         </Label>
         <Input
+          onChange={(e)=>{
+            handlePw(e)
+          }}
           type="password"
           placeholder="영어, 숫자, 특수문자를 포함한 8~19자"
           className="border-x border-y border-solid border-black w-500 h-10"
@@ -45,6 +56,9 @@ const SignupForm = () => {
           비밀번호 확인
         </Label>
         <Input
+          onChange={(e)=>{
+            handlePwChk(e)
+          }}
           type="password"
           className="border-x border-y border-solid border-black w-500 h-10"
         />
@@ -54,6 +68,9 @@ const SignupForm = () => {
           이름
         </Label>
         <Input
+          onChange={(e)=>{
+            handleName(e)
+          }}
           type="text"
           className="border-x border-y border-solid border-black w-500 h-10"
         />
@@ -65,16 +82,19 @@ const SignupForm = () => {
         </Label>
         <div className="flex flex-row justify-between items-center">
           <Input
+            onChange={handlePhone(0)}
             type="text"
             className="border-x border-y border-solid border-black w-150 h-10"
           />
           <div>-</div>
           <Input
+            onChange={handlePhone(1)}
             type="text"
             className="border-x border-y border-solid border-black w-150 h-10"
           />
           <div>-</div>
           <Input
+            onChange={handlePhone(2)}
             type="text"
             className="border-x border-y border-solid border-black w-150 h-10"
           />
@@ -87,6 +107,7 @@ const SignupForm = () => {
         <div className="flex flex-col">
           <div className="flex flex-row justify-between mb-4">
             <Input
+              onChange={handleZipcode}
               type="text"
               placeholder="우편번호"
               className="border-x border-y border-solid border-black w-369 h-10"
@@ -96,11 +117,13 @@ const SignupForm = () => {
             </Button>
           </div>
           <Input
+            onChange={handleAddr}
             type="text"
             placeholder="주소"
             className="border-x border-y border-solid border-black w-500 h-10 mb-4"
           />
           <Input
+            onChange={handleAddrDet}
             type="text"
             placeholder="상세주소"
             className="border-x border-y border-solid border-black w-500 h-10"
