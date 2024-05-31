@@ -94,6 +94,57 @@ const config: Config = {
       left: {
         custom: "calc(50vw - 650px)",
       },
+      translate: {
+        "45vw": "44.9vw",
+      },
+      transitionDuration: {
+        "3000": "3000ms",
+      },
+      transitionDelay: {
+        "2500": "2500ms",
+      },
+      keyframes: {
+        intro: {
+          from: {
+            transform: "translateY(0)",
+            height: "45vw",
+          },
+          to: {
+            transform: "translateY(45vw)",
+            height: "0",
+          },
+        },
+        introafter: {
+          "0%, 50%": {
+            borderBottom: "21.6vw solid transparent",
+          },
+          "100%": {
+            borderBottom: "0vw solid transparent",
+          },
+        },
+        introafter1: {
+          "0%, 50%": {
+            top: "21.6vw",
+          },
+          "100%": {
+            top: "0vw",
+          },
+        },
+        introafter2: {
+          "0%, 50%": {
+            height: "66.5vw",
+          },
+          "100%": {
+            height: "44.9vw",
+          },
+        },
+      },
+      animation: {
+        intro: "intro 2s ease-in-out",
+        introafter: "introafter 4s ease-in-out",
+        introafter1: "introafter1 4s ease-in-out",
+        introafter2: "introafter2 4s ease-in-out",
+      },
     },
   },
   plugins: [],

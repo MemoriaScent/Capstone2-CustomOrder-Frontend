@@ -5,10 +5,10 @@ import Keyword from "@/components/molecule/Keyword";
 import React from "react";
 
 interface CustomProps {
-  nextLevel: () => void;
+  complete: () => void;
 }
 
-const Custom6: React.FC<CustomProps> = ({ nextLevel }) => {
+const Custom6: React.FC<CustomProps> = ({ complete }) => {
   return (
     <div className="flex flex-col mt-60 items-center z-10">
       <Label className="text-center mb-2.5 textTest">
@@ -33,7 +33,7 @@ const Custom6: React.FC<CustomProps> = ({ nextLevel }) => {
       </div>
       <Button
         className="w-300 h-50 bg-black text-white rounded-none mt-60"
-        onClick={nextLevel}
+        onClick={complete}
       >
         향기 담기
       </Button>

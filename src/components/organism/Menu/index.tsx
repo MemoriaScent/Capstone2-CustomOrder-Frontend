@@ -12,7 +12,7 @@ interface MenuProps {
 const Menu: React.FC<MenuProps> = ({ clickCloseMenu, completeMenu }) => {
   const router = useRouter();
   return (
-    <div className="z-20 fixed top-0 left-0 flex flex-col justify-start items-start w-400  bg-black text-white pb-5">
+    <div className="z-20 h-full fixed top-0 left-0 flex flex-col justify-start items-start w-400  bg-black text-white pb-5">
       <Button
         className="after:content-['\00d7'] text-4xl mt-3.5 ml-2"
         onClick={clickCloseMenu}
