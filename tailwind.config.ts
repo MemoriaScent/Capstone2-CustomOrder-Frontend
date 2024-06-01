@@ -17,6 +17,7 @@ const config: Config = {
         "25": "25px",
         "90": "90px",
         "121": "121px",
+        "150": "150px",
         "320": "320px",
         "150": "150px",
         "200": "200px",
@@ -41,7 +42,9 @@ const config: Config = {
         "100vw": "100vw",
         "700": "700px",
         "720": "720px",
+        "710": "710px",
         "120": "120px",
+        "936": "936px",
       },
       height: {
         "250": "250px",
@@ -61,10 +64,12 @@ const config: Config = {
         "600": "600px",
         "800": "800px",
         "740": "740px",
+        "190": "190px",
       },
       colors: {
         "custom-gray": "#F7F7F7",
         "custom-orange": "#FF7A00",
+        "custom-lightgray": "#D9D9D9",
       },
       padding: {
         "100": "100px",
