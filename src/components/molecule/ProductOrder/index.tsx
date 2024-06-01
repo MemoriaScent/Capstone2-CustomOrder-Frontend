@@ -2,9 +2,11 @@
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
 import ProductDetailsProps from "@/components/Types/productDetail";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const ProductOrder: React.FC<ProductDetailsProps> = ({ params }) => {
+  const router = useRouter();
   // 상품 조회 정보?
   const productId = params.productId;
   const [count, setCount] = useState(1);
@@ -56,7 +58,14 @@ const ProductOrder: React.FC<ProductDetailsProps> = ({ params }) => {
         <Label>{(count * Product.price).toLocaleString("ko-KR") + "원"}</Label>
       </div>
       <div className="flex flex-col mt-8">
-        <Button className="h-50 bg-custom-orange text-white rounded-none">
+        <Button
+          className="h-50 bg-custom-orange text-white rounded-none"
+          onClick={() => {
+            router.push(
+              `/payment?name=${Product.name}&count=${count}&price=${Product.price}`
+            );
+          }}
+        >
           구매하기
         </Button>
         <Button className="h-50 border border-black mt-5 rounded-none">

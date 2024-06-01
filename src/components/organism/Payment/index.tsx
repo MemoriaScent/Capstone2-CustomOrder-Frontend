@@ -27,11 +27,12 @@ const Payment = () => {
     item.push({ name: "Signature Diffuser - woody", count: 1, price: 40000 });
   }
   // 구매 품목 총 금액
-  let sum = 0;
-  item.map((value) => (sum += value.price));
-
-  const [count, setCount] = useState(item.length);
-  const [price, setPrice] = useState(sum);
+  let priceSum = 0;
+  item.map((value) => (priceSum += value.price * value.count));
+  let countSum = 0;
+  item.map((value, index) => (countSum += value.count));
+  const [count, setCount] = useState(countSum);
+  const [price, setPrice] = useState(priceSum);
   const [delivery, setDelivery] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(price - delivery - discount);
@@ -82,7 +83,7 @@ const Payment = () => {
                     {value.count}
                   </div>
                   <div className="w-263 flex items-center justify-center pretendardNormalFont-20">
-                    {value.price.toLocaleString("ko-KR") + "원"}
+                    {(value.count * value.price).toLocaleString("ko-KR") + "원"}
                   </div>
                 </div>
               );
