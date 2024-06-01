@@ -8,10 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderRadius: {
+        "20": "20px",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      maxWidth: {
+        "540": "540px",
+        "650": "650px",
+      },
+      maxHeight: {
+        "800": "800px",
       },
       width: {
         "25": "25px",
@@ -33,6 +43,8 @@ const config: Config = {
         "300": "300px",
         "170": "170px",
         "535": "535px",
+        "540": "540px",
+        "700": "700px",
         "244": "244px",
         "155": "155px",
         "194": "194px",
@@ -72,6 +84,8 @@ const config: Config = {
         "custom-gray": "#F7F7F7",
         "custom-orange": "#FF7A00",
         "custom-lightgray": "#D9D9D9",
+        "toss-gray": "#f2f4f6",
+        "toss-blue": "#3282f6",
       },
       padding: {
         "100": "100px",

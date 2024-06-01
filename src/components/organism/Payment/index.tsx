@@ -5,6 +5,7 @@ import Address from "@/components/molecule/Address";
 import Amount from "@/components/molecule/Amount";
 import Items from "@/components/molecule/Items";
 import PaySelect from "@/components/molecule/PaySelect";
+import CheckoutPage from "@/components/pages/checkout";
 
 import { useState } from "react";
 
@@ -42,6 +43,12 @@ const Payment = () => {
   const completeAddress = (zonecode: string, address: string) => {
     setAddress({ zonecode, address, addressDetail: "" });
     setShowPostCodeModal(!showPostCodeModal);
+  };
+
+  const [showPayMent, setShowPayMent] = useState(false);
+  const clickPayMentModal = (event) => {
+    event.preventDefault();
+    setShowPayMent(false);
   };
   return (
     <div className="flex justify-center">
@@ -95,9 +102,21 @@ const Payment = () => {
                 <div className="ml-8">토스페이먼츠</div>
               </div>
             </PaySelect>
-            <Button className="w-535 h-50 bg-black text-white">
+            <Button
+              className="w-535 h-50 bg-black text-white"
+              onClick={(event) => {
+                event.preventDefault();
+                setShowPayMent(true);
+              }}
+            >
               주문 하기
             </Button>
+            {showPayMent && (
+              <CheckoutPage
+                clickPayMentModal={clickPayMentModal}
+                payPrice={totalPrice}
+              ></CheckoutPage>
+            )}
           </div>
         </div>
       </div>

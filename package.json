@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
+    "@tosspayments/payment-widget-sdk": "^0.10.2",
     "jotai": "^2.8.2",
     "next": "14.2.3",
     "react": "^18",
