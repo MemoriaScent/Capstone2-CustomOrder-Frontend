@@ -3,7 +3,11 @@ import { useRouter } from "next/navigation";
 
 const CustomComplete = () => {
   const router = useRouter();
-  setTimeout(() => router.push("/"), 6000);
+  console.log(router);
+  setTimeout(
+    () => router.push("/payment?name=CustomDiffuser&count=1&price=60000"),
+    6000
+  );
   return (
     <div className="relative w-100vw h-45vw animate-introafter2 bg-white">
       <div className="">

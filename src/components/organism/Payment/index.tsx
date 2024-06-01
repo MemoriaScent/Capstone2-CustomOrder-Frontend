@@ -6,16 +6,26 @@ import Amount from "@/components/molecule/Amount";
 import Items from "@/components/molecule/Items";
 import PaySelect from "@/components/molecule/PaySelect";
 import CheckoutPage from "@/components/pages/checkout";
+import { useSearchParams } from "next/navigation";
 
 import { useState } from "react";
 
 const Payment = () => {
-  // 기본값(이전 작업에 따라 변경될 예정)
-  const item = [
-    { name: "Custom Diffuser", count: 1, price: 60000 },
-    { name: "Signature Diffuser - forest", count: 1, price: 40000 },
-    { name: "Signature Diffuser - woody", count: 1, price: 40000 },
-  ];
+  const searchParams = useSearchParams();
+  const item = [];
+  if (searchParams.size > 0) {
+    // 파라미터로 들어오는 데이터
+    item.push({
+      name: searchParams.get("name"),
+      count: Number(searchParams.get("count")),
+      price: Number(searchParams.get("price")),
+    });
+  } else {
+    // 기본값(이전 작업에 따라 변경될 예정)
+    item.push({ name: "Custom Diffuser", count: 1, price: 60000 });
+    item.push({ name: "Signature Diffuser - forest", count: 1, price: 40000 });
+    item.push({ name: "Signature Diffuser - woody", count: 1, price: 40000 });
+  }
   // 구매 품목 총 금액
   let sum = 0;
   item.map((value) => (sum += value.price));
@@ -50,6 +60,7 @@ const Payment = () => {
     event.preventDefault();
     setShowPayMent(false);
   };
+
   return (
     <div className="flex justify-center">
       <div className="flex flex-col w-1136 mt-20">
