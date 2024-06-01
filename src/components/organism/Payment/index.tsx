@@ -1,6 +1,11 @@
 "use client";
+import Button from "@/components/atoms/Button";
+import Input from "@/components/atoms/Input";
 import Address from "@/components/molecule/Address";
+import Amount from "@/components/molecule/Amount";
 import Items from "@/components/molecule/Items";
+import PaySelect from "@/components/molecule/PaySelect";
+
 import { useState } from "react";
 
 const Payment = () => {
@@ -16,6 +21,9 @@ const Payment = () => {
 
   const [count, setCount] = useState(item.length);
   const [price, setPrice] = useState(sum);
+  const [delivery, setDelivery] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(price - delivery - discount);
 
   // 주소 기본값
   const [address, setAddress] = useState({
@@ -36,42 +44,62 @@ const Payment = () => {
     setShowPostCodeModal(!showPostCodeModal);
   };
   return (
-    <div>
-      <div>
-        <Items count={count} price={price}>
-          {item.map((value, index) => {
-            return (
-              <div className="flex flex-row divide-x divide-black h-150">
-                <div className="w-150 p-2 flex items-center justify-center">
-                  <img src="/homeImage.png" className="object-cover h-28"></img>
+    <div className="flex justify-center">
+      <div className="flex flex-col w-1136 mt-20">
+        <div className="mb-70">
+          <Items count={count} price={price}>
+            {item.map((value, index) => {
+              return (
+                <div className="flex flex-row divide-x divide-black h-150">
+                  <div className="w-150 p-2 flex items-center justify-center">
+                    <img
+                      src="/homeImage.png"
+                      className="object-cover h-28"
+                    ></img>
+                  </div>
+                  <div className="w-560 flex items-center px-12 pretendardNormalFont-20">
+                    {value.name}
+                  </div>
+                  <div className="w-163 flex items-center justify-center pretendardNormalFont-20">
+                    {value.count}
+                  </div>
+                  <div className="w-263 flex items-center justify-center pretendardNormalFont-20">
+                    {value.price.toLocaleString("ko-KR") + "원"}
+                  </div>
                 </div>
-                <div className="w-560 flex items-center px-12 pretendardNormalFont-20">
-                  {value.name}
-                </div>
-                <div className="w-163 flex items-center justify-center pretendardNormalFont-20">
-                  {value.count}
-                </div>
-                <div className="w-263 flex items-center justify-center pretendardNormalFont-20">
-                  {value.price.toLocaleString("ko-KR") + "원"}
-                </div>
+              );
+            })}
+          </Items>
+        </div>
+        <div className="mb-70">
+          <Address
+            zonecode={address.zonecode}
+            address={address.address}
+            addressDetail={address.addressDetail}
+            showPostCodeModal={showPostCodeModal}
+            clickPostCodeModal={clickPostCodeModal}
+            completeAddress={completeAddress}
+          ></Address>
+        </div>
+        <div className="flex flex-row justify-between mb-200">
+          <Amount
+            price={price}
+            delivery={delivery}
+            discount={discount}
+            totalPrice={totalPrice}
+          ></Amount>
+          <div className="flex flex-col justify-between">
+            <PaySelect>
+              <div className="flex flex-row h-100 items-center p-10">
+                <Input type="radio" name="toss"></Input>
+                <div className="ml-8">토스페이먼츠</div>
               </div>
-            );
-          })}
-        </Items>
-      </div>
-      <div>
-        <Address
-          zonecode={address.zonecode}
-          address={address.address}
-          addressDetail={address.addressDetail}
-          showPostCodeModal={showPostCodeModal}
-          clickPostCodeModal={clickPostCodeModal}
-          completeAddress={completeAddress}
-        ></Address>
-      </div>
-      <div>
-        <div>주문정보</div>
-        <div>결제종류</div>
+            </PaySelect>
+            <Button className="w-535 h-50 bg-black text-white">
+              주문 하기
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );
