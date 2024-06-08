@@ -1,15 +1,8 @@
+import getProductData from "@/api/Product";
 import ProductLeftDetail from "@/components/organism/ProductLeftDetail";
 import ProductRightDetail from "@/components/organism/ProductRightDetail";
 import ProductDetailsProps from "@/components/Types/productDetail";
 import React from "react";
-
-const getProductData = async () => {
-  const response = await fetch("http://113.198.229.155:8001/deffuser");
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return response.json();
-};
 
 const ProductDetailTemplate: React.FC<ProductDetailsProps> = async ({
   params,
