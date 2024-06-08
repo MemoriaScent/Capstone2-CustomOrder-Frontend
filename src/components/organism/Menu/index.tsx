@@ -20,9 +20,30 @@ const Menu: React.FC<MenuProps> = ({ clickCloseMenu, completeMenu }) => {
       <div className="p-12">
         <div className="flex flex-col h-600  pretendardNormalFont-24">
           <div className="mb-10">
+            <Button
+              className="pl-0"
+              onClick={(event) => {
+                completeMenu();
+                event.stopPropagation;
+                router.push("/");
+              }}
+            >
+              Main
+            </Button>
+          </div>
+          <div className="mb-10">
             <div>Diffuser</div>
             <div className="pretendardNormalFont-20 flex flex-col items-start">
-              <Button className="mt-2.5">All Products</Button>
+              <Button
+                className="mt-2.5"
+                onClick={(event) => {
+                  completeMenu();
+                  event.stopPropagation;
+                  router.push("/product");
+                }}
+              >
+                All Products
+              </Button>
               <Button
                 className="mt-2.5"
                 onClick={(event) => {
@@ -39,7 +60,7 @@ const Menu: React.FC<MenuProps> = ({ clickCloseMenu, completeMenu }) => {
                   completeMenu();
                   event.stopPropagation;
                   // 임시로 1번페이지로 바로가게 만듬
-                  router.push("/product/1");
+                  router.push("/product");
                 }}
               >
                 Signature Diffuser
