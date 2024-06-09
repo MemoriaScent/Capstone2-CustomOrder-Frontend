@@ -7,8 +7,7 @@ import Items from "@/components/molecule/Items";
 import PaySelect from "@/components/molecule/PaySelect";
 import CheckoutPage from "@/components/pages/checkout";
 import { useSearchParams } from "next/navigation";
-
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 const Payment = () => {
   const searchParams = useSearchParams();
@@ -127,10 +126,12 @@ const Payment = () => {
               주문 하기
             </Button>
             {showPayMent && (
-              <CheckoutPage
-                clickPayMentModal={clickPayMentModal}
-                payPrice={totalPrice}
-              ></CheckoutPage>
+              <Suspense fallback={<div>Loading...</div>}>
+                <CheckoutPage
+                  clickPayMentModal={clickPayMentModal}
+                  payPrice={totalPrice}
+                ></CheckoutPage>
+              </Suspense>
             )}
           </div>
         </div>
