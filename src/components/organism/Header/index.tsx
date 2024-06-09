@@ -6,11 +6,11 @@ import Menu from "../Menu";
 
 const Header = () => {
   const [showMenuModal, setShowMenuModal] = useState(false);
-  const clickMenu = (event) => {
+  const clickMenu = (event: React.MouseEvent) => {
     event.preventDefault;
     setShowMenuModal(true);
   };
-  const clickCloseMenu = (event) => {
+  const clickCloseMenu = (event: React.MouseEvent) => {
     event.preventDefault;
     setShowMenuModal(false);
   };

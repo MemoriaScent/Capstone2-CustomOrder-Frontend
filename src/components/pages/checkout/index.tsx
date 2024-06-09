@@ -5,9 +5,14 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { loadPaymentWidget, ANONYMOUS } from "@tosspayments/payment-widget-sdk";
+import {
+  loadPaymentWidget,
+  ANONYMOUS,
+  PaymentWidgetInstance,
+} from "@tosspayments/payment-widget-sdk";
 
-const generateRandomString = () => window.btoa(Math.random()).slice(0, 20);
+const generateRandomString = () =>
+  window.btoa(Math.random().toString()).slice(0, 20);
 
 interface CheckoutPageProps {
   clickPayMentModal: (event: any) => void;
@@ -18,10 +23,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({
   clickPayMentModal,
   payPrice,
 }) => {
-  const paymentWidgetRef = useRef(null);
-  const paymentMethodsWidgetRef = useRef(null);
-  const agreementWidgetRef = useRef(null);
-  const [price, setPrice] = useState(payPrice);
+  const paymentWidgetRef = useRef<PaymentWidgetInstance | null>(null);
+  const paymentMethodsWidgetRef = useRef<ReturnType<
+    PaymentWidgetInstance["renderPaymentMethods"]
+  > | null>(null);
+  const agreementWidgetRef = useRef<any>(null);
+  const [price, setPrice] = useState<number>(payPrice);
 
   useEffect(() => {
     (async () => {

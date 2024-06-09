@@ -4,11 +4,11 @@ import Button from "@/components/atoms/Button";
 const ProductFilter = () => {
   return (
     <div className="flex flex-row pretendardNormalFont-20">
-      <Button>All</Button>
+      <Button onClick={() => {}}>All</Button>
       <div>|</div>
-      <Button>Custom</Button>
+      <Button onClick={() => {}}>Custom</Button>
       <div>|</div>
-      <Button>Signature</Button>
+      <Button onClick={() => {}}>Signature</Button>
     </div>
   );
 };

@@ -138,3 +138,113 @@ input[type="radio"]:checked {
   border: 3px solid white;
   box-shadow: 0 0 0 1.6px #ff7a00;
 }
+
+/* Custom CSS */
+.bgOrangeStyle {
+  z-index: 1;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 21.6vw;
+  left: 0;
+  border-top: 45vw solid transparent;
+  border-right: 100vw solid #ff7a00;
+}
+
+.bgOrangeStyle-end {
+  z-index: 1;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  border-top: 45vw solid transparent;
+  border-right: 100vw solid #ff7a00;
+}
+
+.bgBlackStyle {
+  z-index: 2;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 21.6vw;
+  border-top: 45vw solid transparent;
+  border-left: 100vw solid black;
+}
+
+.bgBlackStyle-end {
+  z-index: 2;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0vw;
+  border-top: 45vw solid transparent;
+  border-left: 100vw solid black;
+}
+
+.bgBlackStyle-1 {
+  z-index: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-bottom: 21.6vw solid transparent;
+  border-left: 50vw solid black;
+}
+
+.bgBlackStyle-1-end {
+  z-index: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-bottom: 0vw solid transparent;
+  border-left: 50vw solid black;
+}
+
+.bgBlackStyle-2 {
+  z-index: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50vw;
+  border-bottom: 21.6vw solid transparent;
+  border-right: 50vw solid black;
+}
+
+.bgBlackStyle-2-end {
+  z-index: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50vw;
+  border-bottom: 0vw solid transparent;
+  border-right: 50vw solid black;
+}
+
+/* Home css */
+.bgTextStyle {
+  font-size: 13vw;
+  z-index: 0;
+  width: 100vw;
+  text-align: center;
+  position: absolute;
+  font-family: ClimateCrisisKR-1979;
+}
+
+.bgOrangeStyle-home {
+  z-index: 1;
+  width: 0px;
+  height: 0px;
+  border-top: 45vw solid transparent;
+  border-left: 100vw solid #ff7a00;
+  position: absolute;
+  left: 0;
+}
+
+.bgBlackStyle-home {
+  z-index: 0;
+  width: 0px;
+  height: 0px;
+  border-top: 45vw solid transparent;
+  border-right: 100vw solid black;
+  position: absolute;
+}

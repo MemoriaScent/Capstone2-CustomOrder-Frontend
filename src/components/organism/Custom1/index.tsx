@@ -23,7 +23,10 @@ const Custom1: React.FC<CustomProps> = ({ nextLevel }) => {
         >
           네
         </Button>
-        <Button className="w-300 h-50 bg-white text-black rounded-none border border-black">
+        <Button
+          onClick={() => {}}
+          className="w-300 h-50 bg-white text-black rounded-none border border-black"
+        >
           아니요
         </Button>
       </div>

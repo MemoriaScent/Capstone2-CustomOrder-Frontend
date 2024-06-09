@@ -1,8 +1,9 @@
+import Button from "@/components/atoms/Button";
 import React from "react";
 import DaumPostcodeEmbed from "react-daum-postcode";
 
 interface DaumPostcodeModalProps {
-  clickPostCodeModal: () => void;
+  clickPostCodeModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
   completeAddress: (zonecode: string, address: string) => void;
 }
 
@@ -18,14 +19,14 @@ const DaumPostcodeModal: React.FC<DaumPostcodeModalProps> = ({
     console.log(address);
   };
   return (
-    <div
+    <Button
       onClick={clickPostCodeModal}
       className="fixed top-0 left-0 right-0 bottom-0 width-full height-full bg-black/40 flex justify-center items-center"
     >
       <div>
         <DaumPostcodeEmbed onComplete={completeHandler}></DaumPostcodeEmbed>
       </div>
-    </div>
+    </Button>
   );
 };
 

@@ -1,6 +1,6 @@
 import Label from "@/components/atoms/Label";
 
-const OderInfo = () => {
+const OrderInfo = () => {
   return (
     <div className="flex flex-row justify-between w-1136 mb-20">
       <div className="flex flex-row divide-x divide-black border border-black">
@@ -59,4 +59,4 @@ const OderInfo = () => {
   );
 };
 
-export default OderInfo;
+export default OrderInfo;

@@ -9,7 +9,9 @@ const Keyword: React.FC<KeywordProps> = ({ children }) => {
   return (
     <div className="flex flex-row items-center border border-black h-30 rounded-full pl-3 mb-3 mr-5">
       {children}
-      <Button className="p-0 m-0">×</Button>
+      <Button onClick={() => {}} className="p-0 m-0">
+        ×
+      </Button>
     </div>
   );
 };

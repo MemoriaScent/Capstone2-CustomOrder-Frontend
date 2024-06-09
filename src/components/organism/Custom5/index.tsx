@@ -15,7 +15,7 @@ const Custom5: React.FC<CustomProps> = ({ nextLevel }) => {
         향기에 이름을 붙여보세요
       </Label>
       <Label>
-        만약 원하시는 이름이 없을 경우 라벨링이 "Untitle" 로 제작됩니다.
+        {'만약 원하시는 이름이 없을 경우 라벨링이 "Untitle" 로 제작됩니다.'}
       </Label>
       <Input
         className="w-700 h-50 border border-black rounded-none p-4 my-120"

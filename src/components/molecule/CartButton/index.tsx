@@ -1,10 +1,9 @@
 import Button from "@/components/atoms/Button";
-import { BasePorps } from "@/components/Types";
 import { orangeColorStyle } from "@/styles/color";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const CartButton: React.FC<BasePorps> = ({ children, css, className }) => {
+const CartButton = () => {
   const router = useRouter();
   return (
     <div style={{ ...CartButtonStyle, ...orangeColorStyle }}>

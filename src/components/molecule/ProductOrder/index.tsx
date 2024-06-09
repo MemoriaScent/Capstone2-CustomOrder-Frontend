@@ -61,7 +61,10 @@ const ProductOrder: React.FC<ProductDetailsProps> = ({ product }) => {
         >
           구매하기
         </Button>
-        <Button className="h-50 border border-black mt-5 rounded-none">
+        <Button
+          onClick={() => {}}
+          className="h-50 border border-black mt-5 rounded-none"
+        >
           장바구니에 담기
         </Button>
       </div>

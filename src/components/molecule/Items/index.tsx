@@ -3,8 +3,8 @@ import React from "react";
 
 interface ItemsProps {
   children: React.ReactNode;
-  count: Number;
-  price: Number;
+  count: number;
+  price: number;
 }
 
 const Items: React.FC<ItemsProps> = ({ children, count, price }) => {

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 interface MenuProps {
-  clickCloseMenu: () => void;
+  clickCloseMenu: (event: React.MouseEvent) => void;
   completeMenu: () => void;
 }
 
@@ -16,7 +16,9 @@ const Menu: React.FC<MenuProps> = ({ clickCloseMenu, completeMenu }) => {
       <Button
         className="after:content-['\00d7'] text-4xl mt-3.5 ml-2"
         onClick={clickCloseMenu}
-      ></Button>
+      >
+        {" "}
+      </Button>
       <div className="p-12">
         <div className="flex flex-col h-600  pretendardNormalFont-24">
           <div className="mb-10">
@@ -70,9 +72,13 @@ const Menu: React.FC<MenuProps> = ({ clickCloseMenu, completeMenu }) => {
           <div className="mb-10">
             <div>About</div>
             <div className="pretendardNormalFont-20 flex flex-col items-start">
-              <Button className="mt-2.5">Brand Story</Button>
-              <Button className="mt-2.5 cursor-not-allowed">Promotion</Button>
-              <Button className="mt-2.5 cursor-not-allowed">
+              <Button onClick={() => {}} className="mt-2.5">
+                Brand Story
+              </Button>
+              <Button onClick={() => {}} className="mt-2.5 cursor-not-allowed">
+                Promotion
+              </Button>
+              <Button onClick={() => {}} className="mt-2.5 cursor-not-allowed">
                 Collaboration
               </Button>
             </div>
@@ -80,7 +86,7 @@ const Menu: React.FC<MenuProps> = ({ clickCloseMenu, completeMenu }) => {
           <div className="mb-10">
             <div>Find Us</div>
             <div className="pretendardNormalFont-20 flex flex-col items-start">
-              <Button className="mt-2.5 cursor-not-allowed">
+              <Button onClick={() => {}} className="mt-2.5 cursor-not-allowed">
                 Store Locator
               </Button>
             </div>

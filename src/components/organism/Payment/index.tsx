@@ -57,7 +57,7 @@ const Payment = () => {
   };
 
   const [showPayMent, setShowPayMent] = useState(false);
-  const clickPayMentModal = (event) => {
+  const clickPayMentModal = (event: React.MouseEvent) => {
     event.preventDefault();
     setShowPayMent(false);
   };
@@ -69,7 +69,10 @@ const Payment = () => {
           <Items count={count} price={price}>
             {item.map((value, index) => {
               return (
-                <div className="flex flex-row divide-x divide-black h-150">
+                <div
+                  key={index}
+                  className="flex flex-row divide-x divide-black h-150"
+                >
                   <div className="w-150 p-2 flex items-center justify-center">
                     <img
                       src="/homeImage.png"

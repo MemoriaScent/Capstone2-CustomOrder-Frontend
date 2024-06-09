@@ -3,17 +3,10 @@ import React from "react";
 
 interface AccountItemProps {
   children: React.ReactNode;
-  css: string;
-  className: string;
   title: string;
 }
 
-const AccountItem: React.FC<AccountItemProps> = ({
-  className,
-  css,
-  children,
-  title,
-}) => {
+const AccountItem: React.FC<AccountItemProps> = ({ children, title }) => {
   return (
     <div className="flex flex-row">
       <Label className="w-200 flex items-center justify-center h-100% border-r border-black">

@@ -2,15 +2,11 @@ import React from "react";
 
 interface LabelProps {
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }
 
-const Label: React.FC<LabelProps> = ({ children,className }) => {
-  return (
-    <div className={className}>
-      {children}
-    </div>
-  );
+const Label: React.FC<LabelProps> = ({ children, className }) => {
+  return <div className={className}>{children}</div>;
 };
 
 export default Label;

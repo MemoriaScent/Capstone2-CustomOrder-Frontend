@@ -1,20 +1,19 @@
 import Label from "@/components/atoms/Label";
 import { BasePorps } from "@/components/Types";
-import { pretendardAuthTitleFontStyle } from "@/styles/font";
 import React from "react";
 
-const Title: React.FC<BasePorps> = ({ children, className }) => {
+interface TitleProps {
+  children: React.ReactNode;
+}
+
+const Title: React.FC<TitleProps> = ({ children }) => {
   return (
     <div>
-      <Label css={titleStyle}>{children}</Label>
+      <Label className="mb-30 text-center pretendardSemiBoldFont-32">
+        {children}
+      </Label>
     </div>
   );
 };
 
 export default Title;
-
-const titleStyle = {
-  marginBottom: "30px",
-  textAlign: "center",
-  ...pretendardAuthTitleFontStyle,
-};

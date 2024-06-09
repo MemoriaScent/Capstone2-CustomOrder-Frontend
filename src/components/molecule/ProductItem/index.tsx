@@ -5,21 +5,21 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 interface ProductItemProps {
-  id: Number;
+  key: Number;
   name: String;
   price: Number;
 }
 
-const ProductItem: React.FC<ProductItemProps> = ({ id, name, price }) => {
+const ProductItem: React.FC<ProductItemProps> = ({ key, name, price }) => {
   const router = useRouter();
   return (
     <Button
       className="w-250 h-370 flex flex-col items-start p-5 justify-between mr-10"
       onClick={() => {
-        router.push(`/product/${id}`);
+        router.push(`/product/${key}`);
       }}
     >
-      <img src={`/product/product_${id}_${1}.png`}></img>
+      <img src={`/product/product_${key}_${1}.png`}></img>
       <div>
         <Label className="w-230 pretendardSemiBoldFont-20 text-start truncate hover:text-clip">
           {name}

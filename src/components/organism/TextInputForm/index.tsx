@@ -6,17 +6,23 @@ import Title from "@/components/molecule/Title";
 import React from "react";
 
 interface FormProps {
-  Props: any;
-  onClick: () => void;
-  className?: string;
+  title: string;
+  inputTitle: string;
+  placeholder: string;
+  buttonTitle: string;
 }
 
-const TextInputForm: React.FC<FormProps> = (Props) => {
+const TextInputForm: React.FC<FormProps> = ({
+  title,
+  inputTitle,
+  placeholder,
+  buttonTitle,
+}) => {
   return (
     <div className="flex flex-col pt-20 pb-200 items-center">
-      <Title className="mb-45">{Props.title}</Title>
+      <Title>{title}</Title>
       <div className="mb-10">
-        <Label>{Props.inputTitle}</Label>
+        <Label>{inputTitle}</Label>
         <Input
           type="text"
           className="border border-black w-500 h-10 mt-2"
@@ -24,11 +30,11 @@ const TextInputForm: React.FC<FormProps> = (Props) => {
       </div>
       <Input
         type="textarea"
-        placeholder={Props.placeholder}
+        placeholder={placeholder}
         className="border border-black h-300 w-500 mb-60"
       ></Input>
-      <Button className="w-500 h-50 bg-black text-white">
-        {Props.buttonTitle}
+      <Button onClick={() => {}} className="w-500 h-50 bg-black text-white">
+        {buttonTitle}
       </Button>
     </div>
   );

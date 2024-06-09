@@ -22,14 +22,14 @@ const ProductReview = () => {
         Review
       </Label>
       <div className="border-t border-white">
-        {review.map((item) => {
-          return <ReviewItem {...item}></ReviewItem>;
+        {review.map((item, index) => {
+          return <ReviewItem key={index} {...item}></ReviewItem>;
         })}
       </div>
       <div className="flex flex-row justify-center mt-50 pretendardNormalFont-20">
-        <Button>{"<"}</Button>
+        <Button onClick={() => {}}>{"<"}</Button>
         <Label>{index}</Label>
-        <Button>{">"}</Button>
+        <Button onClick={() => {}}>{">"}</Button>
       </div>
     </div>
   );

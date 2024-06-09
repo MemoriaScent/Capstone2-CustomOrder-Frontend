@@ -4,7 +4,6 @@ import Divider from "@/components/atoms/Divider";
 import AuthTitle from "@/components/molecule/AuthTitle";
 import LoginFrom from "@/components/molecule/LoginForm";
 import { whiteColorStyle } from "@/styles/color";
-import { pretendardAuthTitleFontStyle } from "@/styles/font";
 import { blackFontColor } from "@/styles/fontColor";
 import React from "react";
 
@@ -14,7 +13,7 @@ const LoginOrganism = () => {
       style={{ ...colorStyle, ...boxStyle }}
       className="flex flex-col justify-center items-center pb-20 pt-30"
     >
-      <AuthTitle css={authTitleStyle}>LOG IN</AuthTitle>
+      <AuthTitle>LOG IN</AuthTitle>
 
       <LoginFrom />
       <Divider />
@@ -26,12 +25,6 @@ const LoginOrganism = () => {
       </Button>
     </div>
   );
-};
-
-const authTitleStyle = {
-  marginBottom: "30px",
-  textAlign: "center",
-  ...pretendardAuthTitleFontStyle,
 };
 
 const boxStyle = {
