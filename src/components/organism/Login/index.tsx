@@ -5,9 +5,11 @@ import AuthTitle from "@/components/molecule/AuthTitle";
 import LoginFrom from "@/components/molecule/LoginForm";
 import { whiteColorStyle } from "@/styles/color";
 import { blackFontColor } from "@/styles/fontColor";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const LoginOrganism = () => {
+  const router = useRouter();
   return (
     <div
       style={{ ...colorStyle, ...boxStyle }}
@@ -18,7 +20,10 @@ const LoginOrganism = () => {
       <LoginFrom />
       <Divider />
       <Button
-        onClick={() => {}}
+        onClick={(event) => {
+          event.stopPropagation;
+          router.push("/auth/signup");
+        }}
         className="bg-black w-500 h-12 text-white mt-14"
       >
         회원가입
