@@ -60,6 +60,7 @@ const config: Config = {
         "936": "936px",
         "772": "772px",
         "230": "230px",
+        "1000": "1000px",
       },
       height: {
         "250": "250px",
@@ -82,6 +83,7 @@ const config: Config = {
         "800": "800px",
         "740": "740px",
         "190": "190px",
+        "470": "470px",
       },
       colors: {
         "custom-gray": "#F7F7F7",
