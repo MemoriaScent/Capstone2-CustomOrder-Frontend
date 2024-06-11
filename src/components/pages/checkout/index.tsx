@@ -1,15 +1,11 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   loadPaymentWidget,
   ANONYMOUS,
   PaymentWidgetInstance,
 } from "@tosspayments/payment-widget-sdk";
+
+const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
 
 const generateRandomString = () =>
   window.btoa(Math.random().toString()).slice(0, 20);
@@ -17,25 +13,28 @@ const generateRandomString = () =>
 interface CheckoutPageProps {
   clickPayMentModal: (event: any) => void;
   payPrice: number;
+  orderName: string;
+  customerName: string;
+  customerEmail: string;
 }
 
 const CheckoutPage: React.FC<CheckoutPageProps> = ({
   clickPayMentModal,
   payPrice,
+  orderName,
+  customerName,
+  customerEmail,
 }) => {
   const paymentWidgetRef = useRef<PaymentWidgetInstance | null>(null);
   const paymentMethodsWidgetRef = useRef<ReturnType<
     PaymentWidgetInstance["renderPaymentMethods"]
   > | null>(null);
-  const agreementWidgetRef = useRef<any>(null);
   const [price, setPrice] = useState<number>(payPrice);
+  const agreementWidgetRef = useRef<any>(null);
 
   useEffect(() => {
     (async () => {
-      const paymentWidget = await loadPaymentWidget(
-        "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm",
-        ANONYMOUS
-      ); // 비회원 customerKey
+      const paymentWidget = await loadPaymentWidget(clientKey, ANONYMOUS); // 비회원 customerKey
 
       if (paymentWidgetRef.current == null) {
         paymentWidgetRef.current = paymentWidget;
@@ -88,16 +87,16 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({
                    */
                   await paymentWidget?.requestPayment({
                     orderId: generateRandomString(),
-                    orderName: "토스 티셔츠 외 2건",
-                    customerName: "김토스",
-                    customerEmail: "customer123@gmail.com",
+                    orderName, // "토스 티셔츠 외 2건",
+                    customerName, // "김토스"
+                    customerEmail, // "customer123@gmail.com",
                     successUrl:
                       window.location.origin +
-                      "/sandbox/success" +
+                      "/payment/success" +
                       window.location.search,
                     failUrl:
                       window.location.origin +
-                      "/sandbox/fail" +
+                      "/payment/fail" +
                       window.location.search,
                   });
                 } catch (error) {

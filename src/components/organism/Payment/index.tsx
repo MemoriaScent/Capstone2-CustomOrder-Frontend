@@ -36,12 +36,16 @@ const Payment = () => {
   const [discount, setDiscount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(price - delivery - discount);
 
-  // 주소 기본값
+  // 주소 기본값(사용자 정보 조회해서 제공)
   const [address, setAddress] = useState({
     zonecode: "47340",
     address: "부산 부산진구 엄광로 176",
     addressDetail: "산학협력관 412호",
   });
+
+  const [orderName, setOrderName] = useState("토스 티셔츠 외 2건");
+  const [customerName, setCustomerName] = useState("김토스");
+  const [customerEmail, setCustomerEmail] = useState("customer123@gmail.com");
 
   // 다음 주소 코드
   const [showPostCodeModal, setShowPostCodeModal] = useState(false);
@@ -130,6 +134,9 @@ const Payment = () => {
                 <CheckoutPage
                   clickPayMentModal={clickPayMentModal}
                   payPrice={totalPrice}
+                  orderName={orderName}
+                  customerName={customerName}
+                  customerEmail={customerEmail}
                 ></CheckoutPage>
               </Suspense>
             )}
