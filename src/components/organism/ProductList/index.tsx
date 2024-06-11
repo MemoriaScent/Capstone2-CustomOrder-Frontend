@@ -1,4 +1,4 @@
-import ProductFilter from "@/components/molecule/\bProductFilter";
+import ProductFilter from "@/components/molecule/ProductFilter";
 import ProductItem from "@/components/molecule/ProductItem";
 import React from "react";
 
@@ -28,7 +28,8 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
           ): React.ReactNode => {
             return (
               <ProductItem
-                key={value.id}
+                key={index}
+                id={value.id}
                 name={value.Name}
                 price={value.Price}
               ></ProductItem>
