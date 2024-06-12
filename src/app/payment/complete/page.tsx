@@ -1,10 +1,11 @@
 import PayMentCompletePage from "@/components/pages/PayMentCompletePage";
+import { Suspense } from "react";
 
 const PaymentComplete = () => {
   return (
-    <div>
+    <Suspense fallback={<div>Loading...</div>}>
       <PayMentCompletePage></PayMentCompletePage>
-    </div>
+    </Suspense>
   );
 };
 
