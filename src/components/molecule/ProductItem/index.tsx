@@ -13,6 +13,11 @@ interface ProductItemProps {
 
 const ProductItem: React.FC<ProductItemProps> = ({ id, name, price }) => {
   const router = useRouter();
+
+  console.log(id);
+  console.log(name);
+  console.log(price);
+
   return (
     <Button
       className="w-250 h-370 flex flex-col items-start p-5 justify-between mr-10"
