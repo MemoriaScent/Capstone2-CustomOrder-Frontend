@@ -24,6 +24,8 @@ export interface SignupState {
 	  addrDet: "",
 	},
   });
+
+  
 export const locationAtom = atom(
 	{
 		zonecode: "",

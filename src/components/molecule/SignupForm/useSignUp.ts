@@ -11,9 +11,10 @@ export default function useSignUp(){
         e.preventDefault();
         console.log(signUp)
     }
+
     const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
         const newData = {
-            ...signUp,
+            ...signUp, 
             email : e.target.value.toString(),
         }
         setSignup(newData)
@@ -62,17 +63,26 @@ export default function useSignUp(){
         setSignup(newData);
     }
     
+    const serverUrl = process.env.NEXT_PUBLIC_API_SERVER_URL;
+    const serverPort = process.env.NEXT_PUBLIC_API_SERVER_PORT;
+
 
     const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        console.log(signUp);
-
+        
+        console.log('NEXT_PUBLIC_API_SERVER_URL:', process.env.NEXT_PUBLIC_API_SERVER_URL);
+        console.log('NEXT_PUBLIC_API_SERVER_PORT:', process.env.NEXT_PUBLIC_API_SERVER_PORT);
+        const signUpWithParsedLocation = {
+            ...signUp,
+            location: JSON.stringify(signUp.location)
+        };
+        console.log(signUpWithParsedLocation);
         // 백엔드로 데이터 전송
         try {
-            const response = await fetch('/user/register', {
+            const response = await fetch(`${serverUrl}:${serverPort}/user/register`, {
                 method: 'POST',
                 
-                body: JSON.stringify(signUp)
+                body: JSON.stringify(signUpWithParsedLocation)
             });
 
             if (!response.ok) {
