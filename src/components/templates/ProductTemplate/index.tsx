@@ -1,14 +1,6 @@
 import getProductData from "@/api/Product";
 import ProductList from "@/components/organism/ProductList";
 
-interface ProductListProps {
-  products: {
-    id: number;
-    Name: string;
-    Price: number;
-  };
-}
-
 const ProductTemplate = async () => {
   let products = await getProductData();
   products = products.sort(

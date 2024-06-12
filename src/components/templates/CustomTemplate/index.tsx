@@ -4,10 +4,9 @@ import Custom2 from "@/components/organism/Custom2";
 import Custom3 from "@/components/organism/Custom3";
 import Custom4 from "@/components/organism/Custom4";
 import Custom5 from "@/components/organism/Custom5";
-import Custom6 from "@/components/organism/Custom6";
 import CustomBGImage from "@/components/organism/CustomBGImage";
 import { useRouter } from "next/navigation";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const CustomTamplate = () => {
   const router = useRouter();
@@ -16,8 +15,8 @@ const CustomTamplate = () => {
   const nextLevel = () => {
     setLevel(level + 1);
   };
-  const complete = () => {
-    router.push("/custom/complete");
+  const success = () => {
+    router.push("/custom/success");
   };
   useEffect(() => {
     switch (level) {
@@ -34,10 +33,7 @@ const CustomTamplate = () => {
         setContent(<Custom4 nextLevel={nextLevel}></Custom4>);
         break;
       case 5:
-        setContent(<Custom5 nextLevel={nextLevel}></Custom5>);
-        break;
-      case 6:
-        setContent(<Custom6 complete={complete}></Custom6>);
+        setContent(<Custom5 success={success}></Custom5>);
         break;
     }
   }, [level]);

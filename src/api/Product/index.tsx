@@ -8,6 +8,7 @@ const getProductData = async () => {
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
+  console.log("------------------------------");
   return response.json();
 };
 

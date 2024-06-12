@@ -1,7 +1,11 @@
 import ProductTemplate from "@/components/templates/ProductTemplate";
 
 const ProductPage = () => {
-  return <ProductTemplate></ProductTemplate>;
+  return (
+    <div>
+      <ProductTemplate></ProductTemplate>;
+    </div>
+  );
 };
 
 export default ProductPage;
