@@ -8,25 +8,16 @@ import {
 import React from "react";
 
 interface MyItemProps {
-  children: React.ReactNode;
-  css: string;
-  className: string;
-  props: any;
+  title: string;
+  content: string;
 }
 
-const MyItem: React.FC<MyItemProps> = ({
-  children,
-  css,
-  className,
-  ...props
-}) => {
+const MyItem: React.FC<MyItemProps> = ({ title, content }) => {
   return (
     <div className="flex flex-col justify-between border border-black w-500 h-250 p-7">
       <div>
-        <Label css={pretendardContentTitleFontStyle} className="mb-2">
-          {props.title}
-        </Label>
-        <Label css={pretendardMenuLabelFontStyle}>{props.content}</Label>
+        <Label className="pretendardNormalFont-24 mb-2">{title}</Label>
+        <Label className="pretendardNormalFont-20">{content}</Label>
       </div>
       <div className="flex flex-row justify-end">
         <div style={ItemButtonStyle}>
@@ -40,10 +31,6 @@ const MyItem: React.FC<MyItemProps> = ({
       </div>
     </div>
   );
-};
-
-const ArrowStyle = {
-  left: "10px",
 };
 
 const ItemButtonStyle = {

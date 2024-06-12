@@ -2,7 +2,7 @@ import Button from "@/components/atoms/Button";
 import React from "react";
 
 interface NavigationButtonProps {
-  clickMenu: () => void;
+  clickMenu: (event: any) => void;
 }
 
 const NavigationButton: React.FC<NavigationButtonProps> = ({ clickMenu }) => {
@@ -11,7 +11,9 @@ const NavigationButton: React.FC<NavigationButtonProps> = ({ clickMenu }) => {
       <Button
         onClick={clickMenu}
         className={"w-5 h-3 border-y-2 rounded-none border-white"}
-      ></Button>
+      >
+        {" "}
+      </Button>
     </div>
   );
 };

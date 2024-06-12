@@ -1,34 +1,43 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { loadPaymentWidget, ANONYMOUS } from "@tosspayments/payment-widget-sdk";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  loadPaymentWidget,
+  ANONYMOUS,
+  PaymentWidgetInstance,
+} from "@tosspayments/payment-widget-sdk";
 
-const generateRandomString = () => window.btoa(Math.random()).slice(0, 20);
+// 테스트키 사용(SDK에서 개인키 발급 시 사업자 필요)
+const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
+
+const generateRandomString = () =>
+  window.btoa(Math.random().toString()).slice(0, 20);
 
 interface CheckoutPageProps {
   clickPayMentModal: (event: any) => void;
   payPrice: number;
+  orderName: string;
+  customerName: string;
+  customerEmail: string;
 }
 
 const CheckoutPage: React.FC<CheckoutPageProps> = ({
   clickPayMentModal,
   payPrice,
+  orderName,
+  customerName,
+  customerEmail,
 }) => {
-  const paymentWidgetRef = useRef(null);
-  const paymentMethodsWidgetRef = useRef(null);
-  const agreementWidgetRef = useRef(null);
-  const [price, setPrice] = useState(payPrice);
+  const customerKey = customerEmail ? customerEmail! : ANONYMOUS;
+
+  const paymentWidgetRef = useRef<PaymentWidgetInstance | null>(null);
+  const paymentMethodsWidgetRef = useRef<ReturnType<
+    PaymentWidgetInstance["renderPaymentMethods"]
+  > | null>(null);
+  const [price, setPrice] = useState<number>(payPrice);
+  const agreementWidgetRef = useRef<any>(null);
 
   useEffect(() => {
     (async () => {
-      const paymentWidget = await loadPaymentWidget(
-        "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm",
-        ANONYMOUS
-      ); // 비회원 customerKey
+      const paymentWidget = await loadPaymentWidget(clientKey, customerKey);
 
       if (paymentWidgetRef.current == null) {
         paymentWidgetRef.current = paymentWidget;
@@ -81,16 +90,16 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({
                    */
                   await paymentWidget?.requestPayment({
                     orderId: generateRandomString(),
-                    orderName: "토스 티셔츠 외 2건",
-                    customerName: "김토스",
-                    customerEmail: "customer123@gmail.com",
+                    orderName, // "토스 티셔츠 외 2건",
+                    customerName, // "김토스"
+                    customerEmail, // "customer123@gmail.com",
                     successUrl:
                       window.location.origin +
-                      "/sandbox/success" +
+                      "/payment/success" +
                       window.location.search,
                     failUrl:
                       window.location.origin +
-                      "/sandbox/fail" +
+                      "/payment/fail" +
                       window.location.search,
                   });
                 } catch (error) {

@@ -1,40 +1,39 @@
 "use client";
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
-import OderItem from "@/components/molecule/OrderItem";
-import { pretendardMenuLabelFontStyle } from "@/styles/font";
+import OrderItem from "@/components/molecule/OrderItem";
 
-const oderItemList = [
+const orderItemList = [
   {
-    oderNumber: "24051900001",
+    orderNumber: "24051900001",
     name: "custom diffuser",
     count: 1,
     price: 70000,
     status: 0,
   },
   {
-    oderNumber: "24051900002",
+    orderNumber: "24051900002",
     name: "signature diffuser",
     count: 1,
     price: 40000,
     status: 1,
   },
   {
-    oderNumber: "24051900003",
+    orderNumber: "24051900003",
     name: "custom diffuser",
     count: 1,
     price: 70000,
     status: 2,
   },
   {
-    oderNumber: "24051900004",
+    orderNumber: "24051900004",
     name: "signature diffuser",
     count: 1,
     price: 40000,
     status: 3,
   },
   {
-    oderNumber: "24051900005",
+    orderNumber: "24051900005",
     name: "signature diffuser",
     count: 1,
     price: 40000,
@@ -61,26 +60,26 @@ const Order = () => {
           <Label className="w-218 flex justify-center items-center">취소</Label>
         </div>
         <div>
-          {oderItemList.map((value, index) => {
+          {orderItemList.map((value, index) => {
             return (
-              <OderItem
+              <OrderItem
                 key={index}
-                oderNumber={value.oderNumber}
+                orderNumber={value.orderNumber}
                 name={value.name}
                 count={value.count}
                 price={value.price}
                 status={value.status}
-              ></OderItem>
+              ></OrderItem>
             );
           })}
         </div>
       </div>
       <div className="flex flex-row mt-9 h-4 w-2 items-center">
-        <Button>
+        <Button onClick={() => {}}>
           <div className="w-2 h-2 border-b border-l border-black rounded-none rotate-45"></div>
         </Button>
-        <Label css={pretendardMenuLabelFontStyle}>1</Label>
-        <Button>
+        <Label className="pretendardNormalFont-20">1</Label>
+        <Button onClick={() => {}}>
           <div className="w-2 h-2 border-t border-r border-black rounded-none rotate-45"></div>
         </Button>
       </div>

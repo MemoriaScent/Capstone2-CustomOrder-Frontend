@@ -1,9 +1,12 @@
 import Divider from "@/components/atoms/Divider";
 import Label from "@/components/atoms/Label";
-import { BasePorps } from "@/components/Types";
 import React from "react";
 
-const AuthTitle: React.FC<BasePorps> = ({ children, css, className }) => {
+interface AuthTitleProps {
+  children: React.ReactNode;
+}
+
+const AuthTitle: React.FC<AuthTitleProps> = ({ children }) => {
   return (
     <div>
       <Label className="mb-30 text-center pretendardSemiBoldFont-32">

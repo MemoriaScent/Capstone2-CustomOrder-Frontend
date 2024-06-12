@@ -1,7 +1,5 @@
 "use client";
 import Button from "@/components/atoms/Button";
-import Label from "@/components/atoms/Label";
-import Image from "next/image";
 import React, { useRef, useState } from "react";
 
 interface CustomProps {
@@ -12,7 +10,7 @@ const Custom2: React.FC<CustomProps> = ({ nextLevel }) => {
   const [imgSrc, setImgSrc] = useState<string>(
     "/customImage/default-image.png"
   );
-  const fileInput = useRef(null);
+  const fileInput = useRef<HTMLInputElement>(null);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // 업로드 된 파일 받아옴
     // 파일이 정상적으로 업로드되지 않은 경우 종료
@@ -48,7 +46,7 @@ const Custom2: React.FC<CustomProps> = ({ nextLevel }) => {
         <Button
           className="w-300 h-50 bg-black text-white rounded-none mb-4"
           onClick={() => {
-            fileInput.current.click();
+            fileInput.current?.click();
           }}
         >
           사진 업로드 하기

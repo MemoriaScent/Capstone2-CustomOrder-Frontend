@@ -8,7 +8,10 @@ interface LargeButtonProps {
   css?: string;
 }
 
-const LargeBlackButton: React.FC<LargeButtonProps> = (children, onClick) => {
+const LargeBlackButton: React.FC<LargeButtonProps> = ({
+  children,
+  onClick,
+}) => {
   return (
     <div>
       <Button className="w-500 h-50 bg-black text-white" onClick={onClick}>
@@ -18,7 +21,10 @@ const LargeBlackButton: React.FC<LargeButtonProps> = (children, onClick) => {
   );
 };
 
-const LargeOrangeButton: React.FC<LargeButtonProps> = (children, onClick) => {
+const LargeOrangeButton: React.FC<LargeButtonProps> = ({
+  children,
+  onClick,
+}) => {
   return (
     <Button
       className="w-500 h-50 bg-custom-orange text-white"

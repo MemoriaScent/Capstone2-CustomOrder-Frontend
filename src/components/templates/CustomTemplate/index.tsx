@@ -7,12 +7,12 @@ import Custom5 from "@/components/organism/Custom5";
 import Custom6 from "@/components/organism/Custom6";
 import CustomBGImage from "@/components/organism/CustomBGImage";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 const CustomTamplate = () => {
   const router = useRouter();
   const [level, setLevel] = useState(1);
-  const [content, setContent] = useState();
+  const [content, setContent] = useState<React.ReactNode>();
   const nextLevel = () => {
     setLevel(level + 1);
   };

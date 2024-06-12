@@ -1,7 +1,6 @@
 "use client";
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
-import { climateCrisisBackGroundFontStyle } from "@/styles/font";
 import { useRouter } from "next/navigation";
 
 const HomePage = () => {
@@ -9,9 +8,9 @@ const HomePage = () => {
   return (
     <div>
       <div className="relative w-100vw h-45vw">
-        <div style={bgOrangeStyle}></div>
-        <div style={bgBlackStyle}></div>
-        <div style={bgTextStyle}>CUSTOM</div>
+        <div className="bgOrangeStyle-home"></div>
+        <div className="bgBlackStyle-home"></div>
+        <div className="bgTextStyle">CUSTOM</div>
         <Label className="absolute bottom-10 left-10 text-white z-10 pretendardSemiBoldFont-24">
           아직 당신의 공간을 어떻게 채울지 결정하지 못하셨나요?
           <br />
@@ -62,31 +61,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-const bgTextStyle = {
-  ...climateCrisisBackGroundFontStyle,
-  fontSize: "13vw",
-  zIndex: "0",
-  width: "100vw",
-  textAlign: "center",
-  position: "absolute",
-};
-
-const bgOrangeStyle = {
-  zIndex: "1",
-  width: "0px",
-  height: "0px",
-  borderTop: "45vw solid transparent",
-  borderLeft: "100vw solid #FF7A00",
-  position: "absolute",
-  left: "0",
-};
-
-const bgBlackStyle = {
-  zIndex: "0",
-  width: "0px",
-  height: "0px",
-  borderTop: "45vw solid transparent",
-  borderRight: "100vw solid black",
-  position: "absolute",
-};

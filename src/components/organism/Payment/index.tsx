@@ -7,8 +7,7 @@ import Items from "@/components/molecule/Items";
 import PaySelect from "@/components/molecule/PaySelect";
 import CheckoutPage from "@/components/pages/checkout";
 import { useSearchParams } from "next/navigation";
-
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 const Payment = () => {
   const searchParams = useSearchParams();
@@ -37,12 +36,16 @@ const Payment = () => {
   const [discount, setDiscount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(price - delivery - discount);
 
-  // 주소 기본값
+  // 주소 기본값(사용자 정보 조회해서 제공)
   const [address, setAddress] = useState({
     zonecode: "47340",
     address: "부산 부산진구 엄광로 176",
     addressDetail: "산학협력관 412호",
   });
+
+  const [orderName, setOrderName] = useState("토스 티셔츠 외 2건");
+  const [customerName, setCustomerName] = useState("김토스");
+  const [customerEmail, setCustomerEmail] = useState("customer123@gmail.com");
 
   // 다음 주소 코드
   const [showPostCodeModal, setShowPostCodeModal] = useState(false);
@@ -57,7 +60,7 @@ const Payment = () => {
   };
 
   const [showPayMent, setShowPayMent] = useState(false);
-  const clickPayMentModal = (event) => {
+  const clickPayMentModal = (event: React.MouseEvent) => {
     event.preventDefault();
     setShowPayMent(false);
   };
@@ -69,7 +72,10 @@ const Payment = () => {
           <Items count={count} price={price}>
             {item.map((value, index) => {
               return (
-                <div className="flex flex-row divide-x divide-black h-150">
+                <div
+                  key={index}
+                  className="flex flex-row divide-x divide-black h-150"
+                >
                   <div className="w-150 p-2 flex items-center justify-center">
                     <img
                       src="/homeImage.png"
@@ -124,10 +130,15 @@ const Payment = () => {
               주문 하기
             </Button>
             {showPayMent && (
-              <CheckoutPage
-                clickPayMentModal={clickPayMentModal}
-                payPrice={totalPrice}
-              ></CheckoutPage>
+              <Suspense fallback={<div>Loading...</div>}>
+                <CheckoutPage
+                  clickPayMentModal={clickPayMentModal}
+                  payPrice={totalPrice}
+                  orderName={orderName}
+                  customerName={customerName}
+                  customerEmail={customerEmail}
+                ></CheckoutPage>
+              </Suspense>
             )}
           </div>
         </div>

@@ -1,10 +1,11 @@
 import Payment from "@/components/organism/Payment";
+import { Suspense } from "react";
 
 const PayMentTemplate = () => {
   return (
-    <div>
+    <Suspense fallback={<div>Loading...</div>}>
       <Payment></Payment>
-    </div>
+    </Suspense>
   );
 };
 

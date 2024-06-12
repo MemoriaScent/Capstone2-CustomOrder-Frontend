@@ -7,9 +7,9 @@ interface AddressProps {
   zonecode: string;
   address: string;
   addressDetail: string;
-  showPostCodeModal: () => void;
-  clickPostCodeModal: () => void;
-  completeAddress: () => void;
+  showPostCodeModal: boolean;
+  clickPostCodeModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  completeAddress: (zonecode: string, address: string) => void;
 }
 
 const Address: React.FC<AddressProps> = ({

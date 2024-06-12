@@ -10,7 +10,12 @@ const Props = {
 const OderCancelTamplate = () => {
   return (
     <div>
-      <TextInputForm {...Props} onClick={() => {}} />
+      <TextInputForm
+        title={Props.title}
+        inputTitle={Props.inputTitle}
+        placeholder={Props.placeholder}
+        buttonTitle={Props.buttonTitle}
+      />
     </div>
   );
 };

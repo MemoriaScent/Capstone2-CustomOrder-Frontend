@@ -1,3 +1,5 @@
+import React from "react";
+
 interface AmountProps {
   price: number;
   delivery: number;
@@ -5,7 +7,12 @@ interface AmountProps {
   totalPrice: number;
 }
 
-const Amount = ({ price, delivery, discount, totalPrice }) => {
+const Amount: React.FC<AmountProps> = ({
+  price,
+  delivery,
+  discount,
+  totalPrice,
+}) => {
   return (
     <div className="flex flex-col w-535 border border-black divide-y divide-black">
       <div className="flex flex-row h-100 divide-x divide-black">

@@ -1,7 +1,7 @@
 import Signup from "@/components/organism/Signup";
 import React from "react";
 
-const SignupTamplate = () => {
+const SignupTemplate = () => {
   return (
     <div>
       <Signup />
@@ -9,4 +9,4 @@ const SignupTamplate = () => {
   );
 };
 
-export default SignupTamplate;
+export default SignupTemplate;
