@@ -5,11 +5,11 @@ import Custom3 from "@/components/organism/Custom3";
 import Custom4 from "@/components/organism/Custom4";
 import Custom5 from "@/components/organism/Custom5";
 import CustomBGImage from "@/components/organism/CustomBGImage";
-import axios from "axios";
 import { useAtomValue } from "jotai";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { customAtom } from "./JAtom";
+import getGPTData from "@/api/GPT";
 
 const CustomTamplate = () => {
   const router = useRouter();
@@ -19,58 +19,14 @@ const CustomTamplate = () => {
     setLevel(level + 1);
   };
 
-  // API 호출
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-
   const custom = useAtomValue(customAtom);
 
   const handleSubmit = async () => {
     console.log("12");
 
-    if (!custom.story) {
-      console.log("no story");
-      setError("Both story are required");
-      return;
-    }
-
-    if (!custom.image) {
-      console.log("no image");
-    } else {
-      const response = await axios.get(custom.image, {
-        responseType: "blob",
-      });
-
-      const formData = new FormData();
-      formData.append("file", response.data, "image.jpg");
-
-      setLoading(true); // 로딩 시작
-      setError(null); // 기존 에러 리셋
-
-      console.log("2");
-      try {
-        const res = await axios.post(
-          `http://113.198.229.153:201/api/tasks/?story=${encodeURIComponent(
-            custom.story + custom.taste
-          )}`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        localStorage.setItem("apiResponse", JSON.stringify(res.data)); // API 응답을 localStorage에 저장
-        setLoading(false); // 로딩 종료
-        console.log(JSON.stringify(res.data));
-        router.push("/custom/success"); // 성공 페이지로 이동
-      } catch (err) {
-        console.log("api error");
-        setError("Failed to send request");
-        setLoading(false); // 로딩 종료
-      }
-    }
+    router.push("/custom/success");
   };
+
   useEffect(() => {
     switch (level) {
       case 1:
