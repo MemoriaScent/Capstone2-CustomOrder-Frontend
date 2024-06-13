@@ -53,6 +53,11 @@ main {
   flex: 1;
 }
 
+// Scroll Bar 제거
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
 // pretendard Font
 .pretendardBoldFont-40 {
   font-family: Pretendard;
