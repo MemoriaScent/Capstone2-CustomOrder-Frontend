@@ -11,10 +11,7 @@ const PayMentCompletePage = () => {
 
   if (searchParams.size > 0) {
     payInfo.push({
-      paymentType: searchParams.get("paymentType"),
       orderId: searchParams.get("orderId"),
-      paymentKey: searchParams.get("paymentKey"),
-      amount: searchParams.get("amount"),
     });
   } else {
     return <div>잘못된 접근입니다.</div>;
