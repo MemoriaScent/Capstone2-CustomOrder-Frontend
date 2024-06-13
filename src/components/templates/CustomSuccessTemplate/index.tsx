@@ -9,7 +9,10 @@ import getGPTData from "@/api/GPT";
 
 const CustomSuccessTemplate = async () => {
   const router = useRouter();
-  const [responseData, setResponseData] = useState();
+  const [responseData, setResponseData] = useState<{
+    like: string[];
+    hate: string[];
+  }>();
   const [loading, setLoading] = useState<boolean>(true);
 
   // GPT API 호출
@@ -50,7 +53,7 @@ const CustomSuccessTemplate = async () => {
             }
             const res = { like, hate };
             setResponseData(res);
-            useState(false);
+            setLoading(false);
           }
         } catch (error) {
           console.error("API 호출 오류:", error);
