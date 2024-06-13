@@ -21,7 +21,7 @@ const Signup = () => {
       <SignupForm />
       <Divider />
       <Button
-        onClick={handleClick }
+        onClick={handleClick}
         className="bg-custom-orange w-500 h-12 text-white mt-14"
       >
         회원가입

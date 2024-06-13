@@ -41,7 +41,8 @@ const SignupForm = () => {
     handlePwChk,
     handleName,
     handlePhone,
-    handleArrDet
+    handleArrDet,
+    handleDupLogin
     
   } = useSignUp()
   return (
@@ -52,7 +53,7 @@ const SignupForm = () => {
           <Input onChange={(e)=>{
             handleEmail(e)
           }} className="border-x border-y border-solid border-black w-400 h-10 outline-custom-orange" />
-          <Button  onClick={handleclick} className="bg-black w-90 h-10 text-white">중복확인</Button>
+          <Button  onClick={handleDupLogin} className="bg-black w-90 h-10 text-white">중복확인</Button>
         </div>
       </div>
       <div className="mb-4">

@@ -66,7 +66,36 @@ export default function useSignUp(){
     const serverUrl = process.env.NEXT_PUBLIC_API_SERVER_URL;
     const serverPort = process.env.NEXT_PUBLIC_API_SERVER_PORT;
 
+    const handleDupLogin = async (e:React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
 
+        try {
+            console.log(JSON.stringify({
+                email: signUp.email,
+            }) )
+            const response = await fetch(`${serverUrl}:${serverPort}/user/duplication`, {
+                
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                
+                body: JSON.stringify({
+                    email: signUp.email,
+                }) 
+                
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            console.log('Success:', data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
     const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         
@@ -81,7 +110,9 @@ export default function useSignUp(){
         try {
             const response = await fetch(`${serverUrl}:${serverPort}/user/register`, {
                 method: 'POST',
-                
+                headers: {
+                    "Content-Type": "application/json",
+                  },
                 body: JSON.stringify(signUpWithParsedLocation)
             });
 
@@ -90,7 +121,7 @@ export default function useSignUp(){
             }
 
             const data = await response.json();
-            console.log('Success:', data);
+            console.log(data);
         } catch (error) {
             console.error('Error:', error);
         }
@@ -103,6 +134,7 @@ export default function useSignUp(){
         handleName,
         handlePhone,
         handleClick,
-        handleArrDet
+        handleArrDet,
+        handleDupLogin
     }
 }
