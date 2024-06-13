@@ -2,9 +2,7 @@ import React from "react";
 import ReviewDet from "@/components/organism/ReviewDet";
 
 const ReviewDetTemplate = () => {
-  return (
-    <ReviewDet/>
-  );
+  return <ReviewDet params={{ id: "1" }} />;
 };
 
-export default ReviewDetTemplate
+export default ReviewDetTemplate;
