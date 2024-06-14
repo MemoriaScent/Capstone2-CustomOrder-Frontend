@@ -4,49 +4,58 @@ import { useEffect,useState } from "react";
 import { signupAtom } from "@/components/molecule/SignupForm/JAtom";
 export default function useAccount(){
     const [signUp, setSignup] = useAtom(signupAtom);
-
     const serverUrl = process.env.NEXT_PUBLIC_API_SERVER_URL;
     const serverPort = process.env.NEXT_PUBLIC_API_SERVER_PORT;
-
-    const getAccountData = async (e:React.MouseEvent<HTMLButtonElement>) => {
-
-        useEffect(() => {
-            const fetchAccountData = async () => {
-              try {
-                const token = localStorage.getItem('token');
-                if (!token) {
-                  throw new Error('No token found');
-                }
-        
-                const response = await fetch(`${serverUrl}:${serverPort}/user/myaccount?token=${token}`, {
-                  method: 'GET',
-                  headers: {
-                    'Content-Type': 'application/json'
-                  }
-                });
-        
-                if (!response.ok) {
-                  throw new Error('Network response was not ok');
-                }
-        
-                const data = await response.json();
-                console.log('Success:', data);
-              } catch (error) {
-                console.error('Error:', error);
-              }
-            };
-        
-            fetchAccountData();
-          }, []); 
-    }
-    const handleDupLogin = async (e:React.MouseEvent<HTMLButtonElement>) => {  //중복확인
-        e.preventDefault();
-
+    
+    const fetchAccountData = async () => {  // 유저정보데이터 받아오기
         try {
+          const token = localStorage.getItem('token');
+          console.log(token)
+          if (!token) {
+            throw new Error('No token found');
+          }
+  
+          const response = await fetch(`${serverUrl}:${serverPort}/user/myaccount?token=${token}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+  
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+  
+          const data = await response.json();
+          const formattedPhone = data.phone.replace(/-/g, '');
+          setSignup({
+            email: data.email,
+            pw: data.pw,
+            pwCheck: "",
+            name: data.name,
+            phone: formattedPhone,
+            location: JSON.parse(data.location)
+          });
+          console.log(data.phone)
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+    
+    const handleDupLogin = async (e:React.MouseEvent<HTMLButtonElement>) => {  //중복확인
+        try {
+            
             const response = await fetch(`${serverUrl}:${serverPort}/user/duplication`, {
-                method: 'POST',
                 
-                body: JSON.stringify(signUp.email)
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                
+                body: JSON.stringify({
+                    email: signUp.email,
+                }) 
+                
             });
 
             if (!response.ok) {
@@ -56,7 +65,7 @@ export default function useAccount(){
             const data = await response.json();
             console.log('Success:', data);
         } catch (error) {
-            console.error('Error:', error);
+            alert("중복 된 이메일입니다.")
         }
     }
     const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -111,17 +120,19 @@ export default function useAccount(){
     }
     const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {  
         e.preventDefault();
-        
-        console.log('NEXT_PUBLIC_API_SERVER_URL:', process.env.NEXT_PUBLIC_API_SERVER_URL);
-        console.log('NEXT_PUBLIC_API_SERVER_PORT:', process.env.NEXT_PUBLIC_API_SERVER_PORT);
-        
-        console.log(signUp)
+        const signUpWithParsedLocation = {
+            ...signUp,
+            location: JSON.stringify(signUp.location)
+        };
+        console.log(signUpWithParsedLocation)
         // 백엔드로 데이터 전송
         try {
             const response = await fetch(`${serverUrl}:${serverPort}/user/update`, {
                 method: 'POST',
-                
-                body: JSON.stringify(signUp)
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                body: JSON.stringify(signUpWithParsedLocation)
             });
 
             if (!response.ok) {
@@ -139,6 +150,7 @@ export default function useAccount(){
         console.log(signUp)
     }
     return {
+        fetchAccountData,
         handleDupLogin,
         handleEmail,
         handlePw,
@@ -148,5 +160,6 @@ export default function useAccount(){
         handleArrDet,
         handleClick,
         handleclick,
+
     }
 }

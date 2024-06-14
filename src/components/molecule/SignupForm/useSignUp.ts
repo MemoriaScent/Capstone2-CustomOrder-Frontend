@@ -1,11 +1,12 @@
 
 import { useAtom } from "jotai";
 import { signupAtom, SignupState } from "./JAtom";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
+
 
 export default function useSignUp(){
     const [signUp,setSignup] = useAtom(signupAtom)
-
+    const [phoneParts, setPhoneParts] = useState(['', '', '']);
     
     const handleclick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -40,17 +41,17 @@ export default function useSignUp(){
         }
         setSignup(newData)
     }
-    const handlePhone = (partIndex: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-        // 현재 전화번호 상태를 '-'을 기준으로 분리합니다.
-        let phoneParts = signUp.phone.split("-");
-        // 입력된 부분을 업데이트합니다.
-        phoneParts[partIndex] = e.target.value;
     
-        // 새로운 전화번호를 생성합니다.
-        const newPhone = phoneParts.join("-");
-        // signupAtom의 상태를 업데이트합니다.
-        setSignup({ ...signUp, phone: newPhone });
-      };
+
+    const handlePhone = (partIndex: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newPhoneParts = [...phoneParts];
+        newPhoneParts[partIndex] = e.target.value;
+        setPhoneParts(newPhoneParts);
+
+        // 하이픈을 제거한 전화번호를 상태에 업데이트합니다.
+        const formattedPhone = newPhoneParts.join('');
+        setSignup({ ...signUp, phone: formattedPhone });
+    };
       
       const handleArrDet = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newData = {
@@ -96,12 +97,10 @@ export default function useSignUp(){
             console.error('Error:', error);
         }
     }
-    const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {  // 회원가입
         e.preventDefault();
-        
-        console.log('NEXT_PUBLIC_API_SERVER_URL:', process.env.NEXT_PUBLIC_API_SERVER_URL);
-        console.log('NEXT_PUBLIC_API_SERVER_PORT:', process.env.NEXT_PUBLIC_API_SERVER_PORT);
         const signUpWithParsedLocation = {
+            
             ...signUp,
             location: JSON.stringify(signUp.location)
         };

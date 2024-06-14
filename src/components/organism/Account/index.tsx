@@ -10,12 +10,27 @@ import useAccount from "./useAccount";
 import { useState } from "react";
 import DaumPostcodeModal from "@/components/molecule/DaumPostcodeModal";
 const Account = () => {
-  const [signup,setSignup] = useAtom(signupAtom)
+  const {
+    handleDupLogin,
+        handleEmail,
+        handlePw,
+        handlePwChk,
+        handleName,
+        handlePhone,
+        handleArrDet,
+        handleClick,
+        handleclick,
+        fetchAccountData
+  } = useAccount()
 
-  useEffect(() => {
-    console.log("초기 상태 설정: ", signup);
-  }, []);
+  const [signup,setSignup] = useAtom(signupAtom)
   const [phoneParts, setPhoneParts] = useState(["", "", ""]);
+
+
+  useEffect(()=>{  // 데이터 가져오기
+    fetchAccountData()
+  },[])
+
   useEffect(() => {
     if (signup.phone && signup.phone.length === 11) {
       setPhoneParts([
@@ -45,17 +60,7 @@ const Account = () => {
     setShowPostCodeModal(!showPostCodeModal);
   };
 
-  const {
-    handleDupLogin,
-        handleEmail,
-        handlePw,
-        handlePwChk,
-        handleName,
-        handlePhone,
-        handleArrDet,
-        handleClick,
-        handleclick
-  } = useAccount()
+  
   return (
     <div className="flex flex-col items-center pt-20 pb-200">
       <div className="border border-black divide-y divide-black">
@@ -68,7 +73,7 @@ const Account = () => {
             }}
           />
           <Button
-            onClick={(e) => {handleDupLogin}}
+            onClick={handleDupLogin}
             className="bg-black ml-2.5 w-90 h-10 rounded-none text-white"
           >
             중복확인
@@ -141,7 +146,7 @@ const Account = () => {
       </div>
       <div className="mt-20">
         <Button
-          onClick={() => {}}
+          onClick={handleClick}
           className="w-400 h-50 bg-black text-white border border-black rounded-none"
         >
           회원 정보 수정하기

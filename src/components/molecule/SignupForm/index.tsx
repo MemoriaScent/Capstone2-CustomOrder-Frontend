@@ -89,26 +89,26 @@ const SignupForm = () => {
       </div>
 
       <div className="mb-4">
-        <Label className="mb-2">전화번호</Label>
-        <div className="flex flex-row justify-between items-center">
-          <Input
+      <Label className="mb-2">전화번호</Label>
+    <div className="flex flex-row justify-between items-center">
+        <Input
             onChange={handlePhone(0)}
             type="text"
             className="border-x border-y border-solid border-black w-150 h-10 outline-custom-orange"
-          />
-          <div>-</div>
-          <Input
+        />
+        <div>-</div>
+        <Input
             onChange={handlePhone(1)}
             type="text"
             className="border-x border-y border-solid border-black w-150 h-10 outline-custom-orange"
-          />
-          <div>-</div>
-          <Input
+        />
+        <div>-</div>
+        <Input
             onChange={handlePhone(2)}
             type="text"
             className="border-x border-y border-solid border-black w-150 h-10 outline-custom-orange"
-          />
-        </div>
+        />
+    </div>
       </div>
       <div className="mb-14">
         <Label className="mb-2">주소</Label>
