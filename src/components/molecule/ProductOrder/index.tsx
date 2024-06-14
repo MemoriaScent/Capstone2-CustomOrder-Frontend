@@ -12,11 +12,8 @@ interface ProductDetailsProps {
 const ProductOrder: React.FC<ProductDetailsProps> = ({ product }) => {
   const router = useRouter();
   const [count, setCount] = useState(1);
-  console.log(product)
-  const {addCart,
-    addCartLocal
-
-  } = useCart()
+  console.log(product);
+  const { addCart, addCartLocal } = useCart();
   return (
     <div className="flex flex-col">
       <Label className="pretendardSemiBoldFont-24">{product.Name}</Label>
@@ -58,16 +55,25 @@ const ProductOrder: React.FC<ProductDetailsProps> = ({ product }) => {
       <div className="flex flex-col mt-8">
         <Button
           className="h-50 bg-custom-orange text-white rounded-none"
-          onClick={() => {
-            router.push(
-              `/payment?name=${product.Name}&count=${count}&price=${product.Price}`
-            );
+          onClick={(e) => {
+            const buyItem = [
+              {
+                count,
+                product: {
+                  id: product.id,
+                  Name: product.Name,
+                  Price: product.Price,
+                },
+              },
+            ];
+            localStorage.setItem("selectedItems", JSON.stringify(buyItem));
+            router.push(`/payment`);
           }}
         >
           구매하기
         </Button>
         <Button
-           onClick={(e) => addCartLocal(e, product, count)}
+          onClick={(e) => addCartLocal(e, product, count)}
           className="h-50 border border-black mt-5 rounded-none"
         >
           장바구니에 담기

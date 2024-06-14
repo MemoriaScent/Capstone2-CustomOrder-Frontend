@@ -168,7 +168,7 @@ const Payment = () => {
                 >
                   <div className="w-150 p-2 flex items-center justify-center">
                     <img
-                      src="/homeImage.png"
+                      src="/HomeImage.png"
                       className="object-cover h-28"
                     ></img>
                   </div>
