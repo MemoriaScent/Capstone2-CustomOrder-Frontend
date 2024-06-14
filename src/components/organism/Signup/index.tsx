@@ -8,10 +8,10 @@ import { pretendardAuthTitleFontStyle } from "@/styles/font";
 import { blackFontColor } from "@/styles/fontColor";
 import React from "react";
 import useSignUp from "@/components/molecule/SignupForm/useSignUp";
+import { useRouter } from "next/navigation";
 const Signup = () => {
-  const {
-    handleClick
-  } = useSignUp()
+  const { handleClick } = useSignUp();
+  const router = useRouter();
   return (
     <form
       style={{ ...colorStyle, ...boxStyle }}
@@ -21,7 +21,10 @@ const Signup = () => {
       <SignupForm />
       <Divider />
       <Button
-        onClick={handleClick}
+        onClick={async (event) => {
+          const state = await handleClick(event);
+          if (state === 200) router.push("/auth/login");
+        }}
         className="bg-custom-orange w-500 h-12 text-white mt-14"
       >
         회원가입

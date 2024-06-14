@@ -9,6 +9,7 @@ interface InputProps {
   canEdit?: boolean;
   name?: string;
   checked?: boolean;
+  maxlength?: number;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -19,7 +20,8 @@ const Input: React.FC<InputProps> = ({
   className,
   canEdit = true,
   name,
-  checked = true
+  checked = true,
+  maxlength,
 }) => {
   return (
     <input
@@ -30,6 +32,7 @@ const Input: React.FC<InputProps> = ({
       className={`px-4 ${className} align-baseline`}
       readOnly={!canEdit}
       name={name}
+      maxLength={maxlength}
       checked={checked}
     />
   );
