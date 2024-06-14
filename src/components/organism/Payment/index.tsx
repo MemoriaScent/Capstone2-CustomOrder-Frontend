@@ -198,7 +198,7 @@ const Payment = () => {
             completeAddress={completeAddress}
           ></Address>
         </div>
-        <div className="flex flex-row justify-between mb-200">
+        <div className="flex flex-row justify-between mb-200 pretendardNormalFont-20">
           <Amount
             price={price}
             delivery={delivery}
