@@ -1,18 +1,16 @@
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
 import { blackColorStyle } from "@/styles/color";
-import {
-  pretendardContentTitleFontStyle,
-  pretendardMenuLabelFontStyle,
-} from "@/styles/font";
 import React from "react";
 
 interface MyItemProps {
   title: string;
   content: string;
+  onClick: (url: string) => void;
+  url?: string;
 }
 
-const MyItem: React.FC<MyItemProps> = ({ title, content }) => {
+const MyItem: React.FC<MyItemProps> = ({ title, content, onClick, url }) => {
   return (
     <div className="flex flex-col justify-between border border-black w-500 h-250 p-7">
       <div>
@@ -22,7 +20,9 @@ const MyItem: React.FC<MyItemProps> = ({ title, content }) => {
       <div className="flex flex-row justify-end">
         <div style={ItemButtonStyle}>
           <Button
-            onClick={() => {}}
+            onClick={() => {
+              if (url) onClick(url);
+            }}
             className="w-full h-full flex flex-row items-center justify-center"
           >
             <img src="Arrow.svg" />
