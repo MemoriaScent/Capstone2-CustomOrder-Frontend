@@ -6,7 +6,7 @@ export default function useAccount(){
     const [signUp, setSignup] = useAtom(signupAtom);
     const serverUrl = process.env.NEXT_PUBLIC_API_SERVER_URL;
     const serverPort = process.env.NEXT_PUBLIC_API_SERVER_PORT;
-    
+    const [phoneParts, setPhoneParts] = useState(['', '', '']);
     const fetchAccountData = async () => {  // 유저정보데이터 받아오기
         try {
           const token = localStorage.getItem('token');
@@ -15,10 +15,11 @@ export default function useAccount(){
             throw new Error('No token found');
           }
   
-          const response = await fetch(`${serverUrl}:${serverPort}/user/myaccount?token=${token}`, {
+          const response = await fetch(`${serverUrl}:${serverPort}/user/myaccount`, {
             method: 'GET',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}` 
             }
           });
   
@@ -97,16 +98,14 @@ export default function useAccount(){
         setSignup(newData)
     }
     const handlePhone = (partIndex: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-        // 현재 전화번호 상태를 '-'을 기준으로 분리합니다.
-        let phoneParts = signUp.phone.split("-");
-        // 입력된 부분을 업데이트합니다.
-        phoneParts[partIndex] = e.target.value;
-    
-        // 새로운 전화번호를 생성합니다.
-        const newPhone = phoneParts.join("-");
-        // signupAtom의 상태를 업데이트합니다.
-        setSignup({ ...signUp, phone: newPhone });
-      };
+        const newPhoneParts = [...phoneParts];
+        newPhoneParts[partIndex] = e.target.value;
+        setPhoneParts(newPhoneParts);
+
+        // 하이픈을 제거한 전화번호를 상태에 업데이트합니다.
+        const formattedPhone = newPhoneParts.join('');
+        setSignup({ ...signUp, phone: formattedPhone });
+    };
       
       const handleArrDet = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newData = {
@@ -118,19 +117,23 @@ export default function useAccount(){
         };
         setSignup(newData);
     }
-    const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {  
+    const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {   //회원정보 수정
+        const token = localStorage.getItem('token');
         e.preventDefault();
         const signUpWithParsedLocation = {
+            token : token,
             ...signUp,
             location: JSON.stringify(signUp.location)
         };
         console.log(signUpWithParsedLocation)
         // 백엔드로 데이터 전송
         try {
+            
             const response = await fetch(`${serverUrl}:${serverPort}/user/update`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}` 
                   },
                 body: JSON.stringify(signUpWithParsedLocation)
             });

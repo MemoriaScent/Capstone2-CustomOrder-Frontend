@@ -97,18 +97,20 @@ const Account = () => {
         </AccountItem>
         <AccountItem title="전화번호">
           <div className="flex flex-row w-500 justify-between items-center">
-            <Input
-             value={phoneParts[0]}
-            onChange={handlePhone(0)} 
-            className="border bg-custom-gray w-150 h-10"></Input>
+          <Input
+            onChange={handlePhone(0)}
+            type="text"
+            className="border-x border-y border-solid border-black w-150 h-10 outline-custom-orange"
+        />
             <div>-</div>
             <Input
-            value={phoneParts[1]}
-            onChange={handlePhone(1)}  
-            className="border bg-custom-gray w-150 h-10"></Input>
+            onChange={handlePhone(1)}
+            type="text"
+            className="border-x border-y border-solid border-black w-150 h-10 outline-custom-orange"
+        />
             <div>-</div>
             <Input
-            value={phoneParts[2]}
+          
             onChange={handlePhone(2)} 
             className="border bg-custom-gray w-150 h-10"></Input>
           </div>
