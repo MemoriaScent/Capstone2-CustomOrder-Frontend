@@ -8,6 +8,7 @@ interface InputProps {
   className?: string;
   canEdit?: boolean;
   name?: string;
+  checked?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -16,8 +17,9 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   type = "text",
   className,
-  canEdit = false,
+  canEdit = true,
   name,
+  checked = true
 }) => {
   return (
     <input
@@ -26,8 +28,9 @@ const Input: React.FC<InputProps> = ({
       onChange={onChange}
       placeholder={placeholder}
       className={`px-4 ${className} align-baseline`}
-      readOnly={canEdit ? true : false}
+      readOnly={!canEdit}
       name={name}
+      checked={checked}
     />
   );
 };
