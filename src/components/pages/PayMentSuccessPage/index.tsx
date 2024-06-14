@@ -17,14 +17,16 @@ const PayMentSuccessPage = async () => {
         const orderId = searchParams.get("orderId");
         const paymentKey = searchParams.get("paymentKey");
         const amount = searchParams.get("amount");
+        const authorization = localStorage.getItem("token");
 
-        if (paymentType && orderId && paymentKey && amount) {
+        if (paymentType && orderId && paymentKey && amount && authorization) {
           try {
             const order = await getPayments(
               paymentType,
               orderId,
               paymentKey,
-              Number(amount)
+              Number(amount),
+              authorization
             );
             router.push("/payment/complete?orderId=" + orderId);
 

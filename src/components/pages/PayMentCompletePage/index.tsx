@@ -18,7 +18,7 @@ const PayMentCompletePage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center mt-150">
+    <div className="flex flex-col items-center my-150">
       <div className="flex flex-col items-center justify-between border border-black w-1000 h-470 pb-60 ">
         <img className="relative bottom-20" src="/PaySuccess.png"></img>
         <div className="flex flex-col items-center">

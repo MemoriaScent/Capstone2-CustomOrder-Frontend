@@ -6,7 +6,8 @@ const getPayments = async (
   paymentType: string | null,
   orderId: string | null,
   paymentKey: string | null,
-  amount: number | null
+  amount: number | null,
+  authorization: string | null
 ) => {
   const data = {
     orderId,
@@ -15,12 +16,17 @@ const getPayments = async (
     amount,
   };
   console.log(data);
+  console.log(authorization);
   try {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_SERVER_URL}:${process.env.NEXT_PUBLIC_API_SERVER_PORT}/toss`,
       data,
       {
-        headers: { "Content-Type": "application/json", id: 1 },
+        headers: {
+          "Content-Type": "application/json",
+          id: 1,
+          Authorization: `Bearer ${authorization}`,
+        },
       }
     );
     console.log(response.data);
