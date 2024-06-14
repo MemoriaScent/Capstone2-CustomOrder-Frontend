@@ -2,7 +2,17 @@ import axios from "axios";
 
 require("dotenv").config();
 
-const getAccountData = async (): Promise<object | undefined> => {
+const getAccountData = async (): Promise<
+  | {
+      id: number;
+      pw: string;
+      email: string;
+      name: string;
+      phone: string;
+      location: string;
+    }
+  | undefined
+> => {
   // 유저정보데이터 받아오기
   try {
     const authorization = localStorage.getItem("token");
@@ -34,9 +44,6 @@ const getAccountData = async (): Promise<object | undefined> => {
     }
 
     const data = await response.data;
-
-    console.log(data);
-    console.log(data.phone);
 
     return data;
   } catch (error) {

@@ -12,7 +12,6 @@ import { Suspense, useEffect, useState } from "react";
 
 const Payment = () => {
   const [first, setfirst] = useState(true);
-  const searchParams = useSearchParams();
   const [orderItem, setOrderItem] = useState<
     [{ name: string; count: number; price: number }]
   >([{ name: "", count: 1, price: 1 }]);
@@ -27,7 +26,8 @@ const Payment = () => {
   const [orderName, setOrderName] = useState<string>();
   const [customerName, setCustomerName] = useState<string>();
   const [customerEmail, setCustomerEmail] = useState<string>();
-  const [customerPhone, setCustomerPhone] = useState<string>();
+  const [customerPhone, setCustomerPhone] =
+    useState<[string, string, string]>();
 
   const [count, setCount] = useState(0);
   const [price, setPrice] = useState(0);
@@ -37,10 +37,12 @@ const Payment = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // 장바구니 조회
-      const selectedItems = JSON.parse(localStorage.getItem("selectedItems"));
       // 사용자 정보 조회
       const data = await getAccountData();
+      // 장바구니 조회
+      const response = localStorage.getItem("selectedItems");
+      let selectedItems;
+      if (response) selectedItems = JSON.parse(response);
 
       // customer Info 추가
       if (data && selectedItems) {
@@ -54,7 +56,12 @@ const Payment = () => {
         );
         setCustomerName(data.name.toString());
         setCustomerEmail(data.email.toString());
-        setCustomerPhone(data.phone);
+        const phone = data.phone;
+        setCustomerPhone([
+          phone.substring(0, 3),
+          phone.substring(3, 7),
+          phone.substring(7, 11),
+        ]);
         // console.log(data);
         // console.log(selectedItems);
 
@@ -64,7 +71,7 @@ const Payment = () => {
           setAddress({
             zonecode: addressData.zonecode,
             address: addressData.address,
-            addressDetail: addressData.addressDetail,
+            addressDetail: addressData.addrDet,
           });
         else {
           setAddress({
@@ -74,24 +81,37 @@ const Payment = () => {
           });
         }
         // 제품 정보 가공 name, cont, price로
-        const item: [{ name: string; count: number; price: number }] = [];
-        selectedItems.map((value, index) => {
-          console.log(index);
-          item.push({
-            name: value.product.Name,
-            count: value.count,
-            price: value.product.Price,
-          });
-        });
+        const item: any = [];
+        selectedItems.map(
+          (
+            value: {
+              count: number;
+              product: { id: number; Name: string; Price: number };
+            },
+            index: number
+          ) => {
+            console.log(index);
+            item.push({
+              name: value.product.Name,
+              count: value.count,
+              price: value.product.Price,
+            });
+          }
+        );
 
         // 주문 금액 가공 sum, delivery, discount, total
         if (item) {
           let priceSum = 0;
           let countSum = 0;
-          item.map((value, index) => {
-            priceSum += value.price * value.count;
-            countSum += value.count;
-          });
+          item.map(
+            (
+              value: { count: number; name: string; price: number },
+              index: number
+            ) => {
+              priceSum += value.price * value.count;
+              countSum += value.count;
+            }
+          );
           setCount(countSum);
           setPrice(priceSum);
           setTotalPrice(priceSum - delivery - discount);
@@ -130,8 +150,8 @@ const Payment = () => {
     !orderItem ||
     !orderName ||
     !customerName ||
-    !customerPhone ||
-    !customerEmail
+    !customerEmail ||
+    !customerPhone?.length
   ) {
     return <div>잘못된 접근입니다.</div>;
   }

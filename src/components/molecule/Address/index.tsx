@@ -5,7 +5,7 @@ import React from "react";
 
 interface AddressProps {
   customerName: string;
-  customerPhone: string;
+  customerPhone: [string, string, string];
   zonecode: string;
   address: string;
   addressDetail: string;
@@ -46,16 +46,19 @@ const Address: React.FC<AddressProps> = ({
           <Input
             type="text"
             className="bg-custom-gray border border-custom-lightgray rounded-none w-150 h-10 pretendardNormalFont-16 outline-custom-orange"
+            value={customerPhone[0]}
           ></Input>
           <div className="w-25 text-center pretendardNormalFont-16">-</div>
           <Input
             type="text"
             className="bg-custom-gray border border-custom-lightgray rounded-none w-150 h-10 pretendardNormalFont-16 outline-custom-orange"
+            value={customerPhone[1]}
           ></Input>
           <div className="w-25 text-center pretendardNormalFont-16">-</div>
           <Input
             type="text"
             className="bg-custom-gray border border-custom-lightgray rounded-none w-150 h-10 pretendardNormalFont-16 outline-custom-orange"
+            value={customerPhone[2]}
           ></Input>
         </div>
       </div>
