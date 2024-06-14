@@ -3,6 +3,7 @@ import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import useCart from "./useCart";
 
 interface ProductDetailsProps {
   product: { id: number; Name: string; Image: string; Price: number };
@@ -10,8 +11,12 @@ interface ProductDetailsProps {
 
 const ProductOrder: React.FC<ProductDetailsProps> = ({ product }) => {
   const router = useRouter();
-  // 상품 조회 정보?
   const [count, setCount] = useState(1);
+  console.log(product)
+  const {addCart,
+    addCartLocal
+
+  } = useCart()
   return (
     <div className="flex flex-col">
       <Label className="pretendardSemiBoldFont-24">{product.Name}</Label>
@@ -62,7 +67,7 @@ const ProductOrder: React.FC<ProductDetailsProps> = ({ product }) => {
           구매하기
         </Button>
         <Button
-          onClick={() => {}}
+           onClick={(e) => addCartLocal(e, product, count)}
           className="h-50 border border-black mt-5 rounded-none"
         >
           장바구니에 담기
