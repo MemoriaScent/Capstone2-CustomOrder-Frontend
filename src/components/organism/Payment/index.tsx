@@ -1,4 +1,5 @@
 "use client";
+import getAccountData from "@/api/UserInfo";
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import Address from "@/components/molecule/Address";
@@ -7,34 +8,14 @@ import Items from "@/components/molecule/Items";
 import PaySelect from "@/components/molecule/PaySelect";
 import CheckoutPage from "@/components/pages/checkout";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 const Payment = () => {
+  const [first, setfirst] = useState(true);
   const searchParams = useSearchParams();
-  const item = [];
-  if (searchParams.size > 0) {
-    // 파라미터로 들어오는 데이터
-    item.push({
-      name: searchParams.get("name"),
-      count: Number(searchParams.get("count")),
-      price: Number(searchParams.get("price")),
-    });
-  } else {
-    // 기본값(이전 작업에 따라 변경될 예정)
-    item.push({ name: "Custom Diffuser", count: 1, price: 60000 });
-    item.push({ name: "Signature Diffuser - forest", count: 1, price: 40000 });
-    item.push({ name: "Signature Diffuser - woody", count: 1, price: 40000 });
-  }
-  // 구매 품목 총 금액
-  let priceSum = 0;
-  item.map((value) => (priceSum += value.price * value.count));
-  let countSum = 0;
-  item.map((value, index) => (countSum += value.count));
-  const [count, setCount] = useState(countSum);
-  const [price, setPrice] = useState(priceSum);
-  const [delivery, setDelivery] = useState(0);
-  const [discount, setDiscount] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(price - delivery - discount);
+  const [orderItem, setOrderItem] = useState<
+    [{ name: string; count: number; price: number }]
+  >([{ name: "", count: 1, price: 1 }]);
 
   // 주소 기본값(사용자 정보 조회해서 제공)
   const [address, setAddress] = useState({
@@ -43,9 +24,86 @@ const Payment = () => {
     addressDetail: "산학협력관 412호",
   });
 
-  const [orderName, setOrderName] = useState("토스 티셔츠 외 2건");
-  const [customerName, setCustomerName] = useState("김토스");
-  const [customerEmail, setCustomerEmail] = useState("customer123@gmail.com");
+  const [orderName, setOrderName] = useState<string>();
+  const [customerName, setCustomerName] = useState<string>();
+  const [customerEmail, setCustomerEmail] = useState<string>();
+  const [customerPhone, setCustomerPhone] = useState<string>();
+
+  const [count, setCount] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [delivery, setDelivery] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // 장바구니 조회
+      const selectedItems = JSON.parse(localStorage.getItem("selectedItems"));
+      // 사용자 정보 조회
+      const data = await getAccountData();
+
+      // customer Info 추가
+      if (data && selectedItems) {
+        // 주문자 정보 추가
+        setOrderName(
+          `${selectedItems[0].product.Name}${
+            selectedItems.length > 1
+              ? "외" + (selectedItems.length - 1) + "개"
+              : ""
+          }`
+        );
+        setCustomerName(data.name.toString());
+        setCustomerEmail(data.email.toString());
+        setCustomerPhone(data.phone);
+        // console.log(data);
+        // console.log(selectedItems);
+
+        // 주문 주소 추가
+        const addressData = JSON.parse(data.location);
+        if (addressData)
+          setAddress({
+            zonecode: addressData.zonecode,
+            address: addressData.address,
+            addressDetail: addressData.addressDetail,
+          });
+        else {
+          setAddress({
+            zonecode: "",
+            address: "",
+            addressDetail: "",
+          });
+        }
+        // 제품 정보 가공 name, cont, price로
+        const item: [{ name: string; count: number; price: number }] = [];
+        selectedItems.map((value, index) => {
+          console.log(index);
+          item.push({
+            name: value.product.Name,
+            count: value.count,
+            price: value.product.Price,
+          });
+        });
+
+        // 주문 금액 가공 sum, delivery, discount, total
+        if (item) {
+          let priceSum = 0;
+          let countSum = 0;
+          item.map((value, index) => {
+            priceSum += value.price * value.count;
+            countSum += value.count;
+          });
+          setCount(countSum);
+          setPrice(priceSum);
+          setTotalPrice(priceSum - delivery - discount);
+          setOrderItem(item);
+        }
+      }
+    };
+
+    fetchData();
+  }, [first]);
+
+  console.log(orderName);
 
   // 다음 주소 코드
   const [showPostCodeModal, setShowPostCodeModal] = useState(false);
@@ -65,12 +123,24 @@ const Payment = () => {
     setShowPayMent(false);
   };
 
+  console.log(orderItem);
+
+  // 주문자 정보 중 이상이 있을 경우 처리
+  if (
+    !orderItem ||
+    !orderName ||
+    !customerName ||
+    !customerPhone ||
+    !customerEmail
+  ) {
+    return <div>잘못된 접근입니다.</div>;
+  }
   return (
     <div className="flex justify-center">
       <div className="flex flex-col w-1136 mt-20">
         <div className="mb-70">
           <Items count={count} price={price}>
-            {item.map((value, index) => {
+            {orderItem.map((value, index) => {
               return (
                 <div
                   key={index}
@@ -98,6 +168,8 @@ const Payment = () => {
         </div>
         <div className="mb-70">
           <Address
+            customerName={customerName}
+            customerPhone={customerPhone}
             zonecode={address.zonecode}
             address={address.address}
             addressDetail={address.addressDetail}
@@ -116,7 +188,7 @@ const Payment = () => {
           <div className="flex flex-col justify-between">
             <PaySelect>
               <div className="flex flex-row h-100 items-center p-10">
-                <Input type="radio" name="toss"></Input>
+                <Input type="radio" name="toss" checked></Input>
                 <div className="ml-8">토스페이먼츠</div>
               </div>
             </PaySelect>

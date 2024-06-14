@@ -4,6 +4,7 @@ import Image from "next/image";
 import Input from "@/components/atoms/Input";
 import { useState, useEffect } from "react";
 import Button from "@/components/atoms/Button";
+import { useRouter } from "next/navigation";
 interface Product {
   id: number;
   Name: string;
@@ -17,11 +18,33 @@ interface CartItem {
 }
 
 const CartInfo = () => {
-  const handleClick = () => {
-    console.log("test");
+  const router = useRouter();
+  const handleClick = (event: React.MouseEvent) => {
+    const cart = localStorage.getItem("cart");
+    if (cart) {
+      localStorage.setItem("selectedItems", cart);
+      router.push("/payment");
+    } else {
+      alert("상품이 없습니다.");
+    }
+  };
+  const handleDeleteClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    const cart = localStorage.getItem("cart");
+    const select = localStorage.getItem("selectedItems");
+    if (cart) {
+      if (select) {
+      } else {
+        alert("상품을 선택해주세요.");
+      }
+    } else {
+      alert("상품이 없습니다.");
+    }
   };
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [checkedItems, setCheckedItems] = useState<{ [key: number]: boolean }>({});
+  const [checkedItems, setCheckedItems] = useState<{ [key: number]: boolean }>(
+    {}
+  );
   const [allChecked, setAllChecked] = useState(true);
 
   useEffect(() => {
@@ -40,9 +63,11 @@ const CartInfo = () => {
     }
   }, []);
   const handleSaveSelectedItems = () => {
-    const selectedItems = cartItems.filter(item => checkedItems[item.product.id]);
+    const selectedItems = cartItems.filter(
+      (item) => checkedItems[item.product.id]
+    );
     localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-    alert('선택된 상품이 저장되었습니다.');
+    router.push("/payment");
   };
 
   const handleCheckboxChange = (productId: number) => {
@@ -87,7 +112,9 @@ const CartInfo = () => {
             onChange={handleAllCheckboxChange}
           ></Input>
         </div>
-        <Label className="w-150 flex justify-center items-center">상품정보</Label>
+        <Label className="w-150 flex justify-center items-center">
+          상품정보
+        </Label>
         <div className="w-560"> </div>
         <Label className="w-163 flex justify-center items-center">수량</Label>
         <Label className="w-263 flex justify-center items-center">가격</Label>
@@ -117,34 +144,50 @@ const CartInfo = () => {
         </div>
       ))}
       <div className="flex flex-row h-60">
-        <div style={{ width: "190px" }} className=""> </div>
+        <div style={{ width: "190px" }} className="">
+          {" "}
+        </div>
         <div className="w-560"> </div>
-        <Label className="w-163 flex justify-center items-center">총 수량</Label>
+        <Label className="w-163 flex justify-center items-center">
+          총 수량
+        </Label>
         <Label className="w-263 flex justify-center items-center">
           {totalCount}개
         </Label>
       </div>
       <div className="flex flex-row h-60">
-        <div style={{ width: "190px" }} className=""> </div>
+        <div style={{ width: "190px" }} className="">
+          {" "}
+        </div>
         <div className="w-560"> </div>
-        <Label className="w-163 flex justify-center items-center">총 가격</Label>
+        <Label className="w-163 flex justify-center items-center">
+          총 가격
+        </Label>
         <Label className="w-263 flex justify-center items-center">
           {totalPrice}원
         </Label>
       </div>
       <div className="flex flex-row justify-center h-50 mb-105 mt-105">
-      <Button className="bg-custom-orange text-white rounded-none w-500" onClick={handleClick}>
-        전체 상품 주문하기
-      </Button>
-      <Button className="bg-white border border-black rounded-none w-318" onClick={handleSaveSelectedItems}>
-        선택 상품 주문하기
-      </Button>
-      <Button className="bg-black text-white rounded-none w-318" onClick={handleClick}>
-        선택 상품 삭제하기
-      </Button>
+        <Button
+          className="bg-custom-orange text-white rounded-none w-500"
+          onClick={handleClick}
+        >
+          전체 상품 주문하기
+        </Button>
+        <Button
+          className="bg-white border border-black rounded-none w-318"
+          onClick={handleSaveSelectedItems}
+        >
+          선택 상품 주문하기
+        </Button>
+        <Button
+          className="bg-black text-white rounded-none w-318"
+          onClick={handleDeleteClick}
+        >
+          선택 상품 삭제하기
+        </Button>
+      </div>
     </div>
-    </div>
-    
   );
 };
 

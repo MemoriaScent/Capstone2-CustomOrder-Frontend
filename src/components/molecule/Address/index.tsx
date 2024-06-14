@@ -4,6 +4,8 @@ import DaumPostcodeModal from "../DaumPostcodeModal";
 import React from "react";
 
 interface AddressProps {
+  customerName: string;
+  customerPhone: string;
   zonecode: string;
   address: string;
   addressDetail: string;
@@ -13,6 +15,8 @@ interface AddressProps {
 }
 
 const Address: React.FC<AddressProps> = ({
+  customerName,
+  customerPhone,
   zonecode,
   address,
   addressDetail,
@@ -30,6 +34,7 @@ const Address: React.FC<AddressProps> = ({
           <Input
             type="text"
             className="bg-custom-gray border border-custom-lightgray rounded-none w-150 h-10 pretendardNormalFont-16 outline-custom-orange"
+            value={customerName}
           ></Input>
         </div>
       </div>
