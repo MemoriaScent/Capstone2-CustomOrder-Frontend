@@ -2,7 +2,7 @@ import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import Label from "@/components/atoms/Label";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface MenuProps {
   clickCloseMenu: (event: React.MouseEvent) => void;
@@ -10,7 +10,13 @@ interface MenuProps {
 }
 
 const Menu: React.FC<MenuProps> = ({ clickCloseMenu, completeMenu }) => {
+  const token = localStorage.getItem("token");
   const router = useRouter();
+  const [tokenState, setTokenState] = useState(true);
+  useEffect(() => {
+    if (token) setTokenState(false);
+  }, [token]);
+
   return (
     <div className="z-20 h-full fixed top-0 left-0 flex flex-col justify-start items-start w-400  bg-black text-white pb-5">
       <Button
@@ -110,16 +116,29 @@ const Menu: React.FC<MenuProps> = ({ clickCloseMenu, completeMenu }) => {
             </Label>
           </div>
           <div className="flex flex-row justify-end">
-            <Button
-              className="pr-0"
-              onClick={(event) => {
-                completeMenu();
-                event.stopPropagation;
-                router.push("/auth/login");
-              }}
-            >
-              Log In
-            </Button>
+            {tokenState ? (
+              <Button
+                className="pr-0"
+                onClick={(event) => {
+                  completeMenu();
+                  event.stopPropagation;
+                  router.push("/auth/login");
+                }}
+              >
+                Log In
+              </Button>
+            ) : (
+              <Button
+                className="pr-0"
+                onClick={(event) => {
+                  completeMenu();
+                  event.stopPropagation;
+                  localStorage.removeItem("token");
+                }}
+              >
+                Log Out
+              </Button>
+            )}
           </div>
         </div>
       </div>
