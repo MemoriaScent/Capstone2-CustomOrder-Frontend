@@ -2,13 +2,15 @@
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
 import Keyword from "@/components/molecule/Keyword";
-import React from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useState } from "react";
 
 interface CustomProps {
   complete: () => void;
+  note: any;
 }
 
-const Custom6: React.FC<CustomProps> = ({ complete }) => {
+const Custom6: React.FC<CustomProps> = ({ complete, note }) => {
   return (
     <div className="flex flex-col mt-60 items-center z-10">
       <Label className="text-center mb-2.5 textTest">

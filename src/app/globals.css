@@ -19,6 +19,7 @@
 }
 
 * {
+  -ms-overflow-style: none; /* IE, Edge */
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
@@ -51,6 +52,11 @@ footer {
 
 main {
   flex: 1;
+}
+
+// Scroll Bar 제거
+::-webkit-scrollbar {
+  display: none;
 }
 
 // pretendard Font

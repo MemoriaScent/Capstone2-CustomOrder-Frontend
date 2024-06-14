@@ -5,8 +5,11 @@ import Custom3 from "@/components/organism/Custom3";
 import Custom4 from "@/components/organism/Custom4";
 import Custom5 from "@/components/organism/Custom5";
 import CustomBGImage from "@/components/organism/CustomBGImage";
+import { useAtomValue } from "jotai";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { customAtom } from "./JAtom";
+import getGPTData from "@/api/GPT";
 
 const CustomTamplate = () => {
   const router = useRouter();
@@ -15,9 +18,15 @@ const CustomTamplate = () => {
   const nextLevel = () => {
     setLevel(level + 1);
   };
-  const success = () => {
+
+  const custom = useAtomValue(customAtom);
+
+  const handleSubmit = async () => {
+    console.log("12");
+
     router.push("/custom/success");
   };
+
   useEffect(() => {
     switch (level) {
       case 1:
@@ -33,7 +42,7 @@ const CustomTamplate = () => {
         setContent(<Custom4 nextLevel={nextLevel}></Custom4>);
         break;
       case 5:
-        setContent(<Custom5 success={success}></Custom5>);
+        setContent(<Custom5 handleSubmit={handleSubmit}></Custom5>);
         break;
     }
   }, [level]);

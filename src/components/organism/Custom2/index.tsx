@@ -1,5 +1,7 @@
 "use client";
 import Button from "@/components/atoms/Button";
+import { customAtom } from "@/components/templates/CustomTemplate/JAtom";
+import { useAtom, useSetAtom } from "jotai";
 import React, { useRef, useState } from "react";
 
 interface CustomProps {
@@ -10,6 +12,8 @@ const Custom2: React.FC<CustomProps> = ({ nextLevel }) => {
   const [imgSrc, setImgSrc] = useState<string>(
     "/customImage/default-image.png"
   );
+  const [custom, setCustom] = useAtom(customAtom);
+
   const fileInput = useRef<HTMLInputElement>(null);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // 업로드 된 파일 받아옴
@@ -26,6 +30,12 @@ const Custom2: React.FC<CustomProps> = ({ nextLevel }) => {
     fileReader.onload = (event) => {
       if (typeof event.target?.result === "string") {
         setImgSrc(event.target?.result);
+        setCustom({
+          image: event.target?.result,
+          story: custom.story,
+          taste: custom.taste,
+          name: custom.name,
+        });
       }
     };
   };

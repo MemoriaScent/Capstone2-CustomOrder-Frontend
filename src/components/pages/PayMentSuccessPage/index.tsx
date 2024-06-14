@@ -1,51 +1,65 @@
 "use client";
+import getPayments from "@/api/Payments";
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const PayMentSuccessPage = () => {
+const PayMentSuccessPage = async () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
-  const payInfo = [];
+  useEffect(() => {
+    const fetchData = async () => {
+      if (searchParams.size > 0) {
+        const paymentType = searchParams.get("paymentType");
+        const orderId = searchParams.get("orderId");
+        const paymentKey = searchParams.get("paymentKey");
+        const amount = searchParams.get("amount");
 
-  if (searchParams.size > 0) {
-    payInfo.push({
-      paymentType: searchParams.get("paymentType"),
-      orderId: searchParams.get("orderId"),
-      paymentKey: searchParams.get("paymentKey"),
-      amount: searchParams.get("amount"),
-    });
-  } else {
-    return <div>잘못된 접근입니다.</div>;
-  }
+        if (paymentType && orderId && paymentKey && amount) {
+          try {
+            const order = await getPayments(
+              paymentType,
+              orderId,
+              paymentKey,
+              Number(amount)
+            );
+            router.push("/payment/complete?orderId=" + orderId);
+
+            if (order) {
+              router.push("/payment/complete?orderId=" + orderId);
+            } else {
+              setLoading(false);
+              // handle order failure, maybe show a message
+            }
+          } catch (error) {
+            console.error("Error during the API call:", error);
+            setLoading(false);
+            // handle error, maybe show a message
+          }
+        } else {
+          setLoading(false);
+          // handle invalid query params
+        }
+      } else {
+        setLoading(false);
+        // handle no query params, maybe show a message
+      }
+    };
+
+    fetchData();
+  }, [searchParams, router]);
 
   return (
-    <div className="flex flex-col items-center mt-150">
-      <div className="flex flex-col items-center justify-between border border-black w-1000 h-470 pb-60 ">
-        <img className="relative bottom-20" src="/PaySuccess.png"></img>
-        <div className="flex flex-col items-center">
-          <Label className="pretendardSemiBoldFont-24">
-            주문이 완료되었습니다.
-          </Label>
-          <Label className="pretendardNormalFont-24">
-            당신의 향기를 담아드릴게요
-          </Label>
-        </div>
-        <Label className="pretendardNormalFont-24">
-          주문번호 : {payInfo[0].orderId}
-        </Label>
-        <Button
-          className="w-500 h-50 bg-black text-white pretendardSemiBoldFont-18"
-          onClick={(event) => {
-            event.stopPropagation();
-            router.push("/");
-          }}
-        >
-          메인 페이지로 이동
-        </Button>
-      </div>
+    <div className="flex flex-col items-center justify-center mt-100">
+      <img
+        src="https://static.toss.im/lotties/loading-spot-apng.png"
+        width="120"
+        height="120"
+      />
+      <h2 className="title text-center">결제 요청까지 성공했어요.</h2>
     </div>
   );
 };
