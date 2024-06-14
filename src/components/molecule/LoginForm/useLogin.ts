@@ -34,15 +34,6 @@ export default function useLogin() {
     //
     e.preventDefault();
 
-    console.log(
-      "NEXT_PUBLIC_API_SERVER_URL:",
-      process.env.NEXT_PUBLIC_API_SERVER_URL
-    );
-    console.log(
-      "NEXT_PUBLIC_API_SERVER_PORT:",
-      process.env.NEXT_PUBLIC_API_SERVER_PORT
-    );
-
     console.log(login);
     // 백엔드로 데이터 전송
     try {
@@ -59,8 +50,10 @@ export default function useLogin() {
       }
 
       const data = await response.json();
+
       console.log("Success:", data);
       localStorage.setItem("token", data.token);
+
       return 200;
     } catch (error) {
       console.error("Error:", error);
