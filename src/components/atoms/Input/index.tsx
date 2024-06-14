@@ -8,6 +8,7 @@ interface InputProps {
   className?: string;
   canEdit?: boolean;
   name?: string;
+  maxlength?: number;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -18,6 +19,7 @@ const Input: React.FC<InputProps> = ({
   className,
   canEdit = false,
   name,
+  maxlength,
 }) => {
   return (
     <input
@@ -28,6 +30,7 @@ const Input: React.FC<InputProps> = ({
       className={`px-4 ${className} align-baseline`}
       readOnly={canEdit ? true : false}
       name={name}
+      maxLength={maxlength}
     />
   );
 };
