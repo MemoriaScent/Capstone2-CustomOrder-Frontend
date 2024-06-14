@@ -1,6 +1,9 @@
 "use client";
 import Button from "@/components/atoms/Button";
-import { customAtom } from "@/components/templates/CustomTemplate/JAtom";
+import {
+  customAtom,
+  gptImageFileAtom,
+} from "@/components/templates/CustomTemplate/JAtom";
 import { useAtom, useSetAtom } from "jotai";
 import React, { useRef, useState } from "react";
 
@@ -13,6 +16,7 @@ const Custom2: React.FC<CustomProps> = ({ nextLevel }) => {
     "/customImage/default-image.png"
   );
   const [custom, setCustom] = useAtom(customAtom);
+  const [imageFile, setImageFile] = useAtom(gptImageFileAtom);
 
   const fileInput = useRef<HTMLInputElement>(null);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +24,9 @@ const Custom2: React.FC<CustomProps> = ({ nextLevel }) => {
     // 파일이 정상적으로 업로드되지 않은 경우 종료
     const file = event.target.files?.[0];
     if (!file) return;
+    if (file.type.startsWith("image/")) {
+      setImageFile(file);
+    }
 
     // 파일리더 객체 생성
     // 받아온 파일을 DataURL 형식으로 변환(Base64 인코딩 문자열)

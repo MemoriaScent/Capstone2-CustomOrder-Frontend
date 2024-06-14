@@ -2,6 +2,7 @@ import Button from "@/components/atoms/Button";
 import React from "react";
 
 interface KeywordProps {
+  key: number;
   children: React.ReactNode;
 }
 

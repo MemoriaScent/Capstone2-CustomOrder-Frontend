@@ -1,21 +1,20 @@
-import { GPTState } from "@/components/templates/CustomTemplate/JAtom";
 import axios from "axios";
 
 require("dotenv").config();
 
-const getGPTData = async (text: string, image: string): Promise<any> => {
+const getGPTData = async (text: string, image: File | null): Promise<any> => {
   console.log(text);
   console.log(image);
-  image = "/product/product_1_1.png";
-  const response = await axios.get(image, {
-    responseType: "blob",
-  });
+  // image = "/product/product_1_1.png";
+  // const response = await axios.get(image, {
+  //   responseType: "blob",
+  // });
 
-  console.log(response);
-  console.log(image);
+  // console.log(response);
+  // console.log(image);
 
   const formData = new FormData();
-  formData.append("file", response.data);
+  if (image != null) formData.append("file", image);
 
   // try {
   //   const res = await axios.post(
@@ -44,8 +43,8 @@ const getGPTData = async (text: string, image: string): Promise<any> => {
         },
       }
     );
+    console.log(res.data);
     return res.data;
-    return JSON.stringify(res.data);
   } catch (err) {
     console.log(err);
     if (axios.isAxiosError(err)) {

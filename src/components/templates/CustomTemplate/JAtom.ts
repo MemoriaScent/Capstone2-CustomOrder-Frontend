@@ -23,3 +23,5 @@ export const gptImageAtom = atom<GPTState>({
   text: "",
   image: "",
 });
+
+export const gptImageFileAtom = atom<File | null>(null);

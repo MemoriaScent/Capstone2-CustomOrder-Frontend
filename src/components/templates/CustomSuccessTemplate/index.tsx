@@ -4,7 +4,7 @@ import CustomBGImage from "@/components/organism/CustomBGImage";
 import { useAtomValue } from "jotai";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { customAtom } from "../CustomTemplate/JAtom";
+import { customAtom, gptImageFileAtom } from "../CustomTemplate/JAtom";
 import getGPTData from "@/api/GPT";
 
 const CustomSuccessTemplate = async () => {
@@ -17,7 +17,7 @@ const CustomSuccessTemplate = async () => {
 
   // GPT API 호출
   const custom = useAtomValue(customAtom);
-
+  const imageFile = useAtomValue(gptImageFileAtom);
   useEffect(() => {
     const fetchData = async () => {
       if (!custom.story && !custom.taste) {
@@ -30,24 +30,28 @@ const CustomSuccessTemplate = async () => {
         try {
           const response = await getGPTData(
             custom.story + custom.taste,
-            custom.image
+            imageFile
           );
 
           console.log("---------------");
 
-          const like: string[] = [];
-          const hate: string[] = [];
+          const like = [];
+          const hate = [];
 
           if (response) {
             const dataObject = response["선호도"];
 
             for (const key in dataObject) {
               if (dataObject.hasOwnProperty(key)) {
+                console.log(`0 ${key} `);
                 const value = dataObject[key];
-                if (value.Level === 1 || value.Level === 2) {
-                  like.push(key);
+                if (value.Level === 2) {
+                  console.log(key.toString());
+                  like.push(key.toString());
                 } else if (value.Level === 0) {
-                  hate.push(key);
+                  console.log(key.toString());
+
+                  hate.push(key.toString());
                 }
               }
             }
@@ -72,7 +76,9 @@ const CustomSuccessTemplate = async () => {
     );
   }
 
-  if (responseData) console.log(responseData.like);
+  if (responseData) {
+    console.log(responseData);
+  }
   const complete = () => {
     router.push("/custom/complete");
   };

@@ -21,15 +21,17 @@ const Custom6: React.FC<CustomProps> = ({ complete, note }) => {
         <div className="flex flex-col items-start mr-10">
           <Label>LIKE</Label>
           <div className="flex flex-wrap content-start w-320 h-230 border border-black p-4">
-            <Keyword>플로럴</Keyword>
+            {note.like.map((value: string[], index: number) => {
+              return <Keyword key={index}>{value}</Keyword>;
+            })}
           </div>
         </div>
         <div className="flex flex-col items-start">
           <Label>HATE</Label>
           <div className="flex flex-wrap content-start w-320 h-230 border border-black p-4">
-            <Keyword>달콤한</Keyword>
-            <Keyword>우드</Keyword>
-            <Keyword>스파이시</Keyword>
+            {note.hate.map((value: string[], index: number) => {
+              return <Keyword key={index}>{value}</Keyword>;
+            })}
           </div>
         </div>
       </div>
