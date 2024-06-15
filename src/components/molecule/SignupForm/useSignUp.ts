@@ -91,11 +91,10 @@ export default function useSignUp() {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
-      const data = await response.json();
-      console.log("Success:", data);
+      alert("사용할 수 있는 이메일입니다.");
     } catch (error) {
       console.error("Error:", error);
+      alert("사용할 수 없는 이메일입니다.");
     }
   };
   const handleClick = async (

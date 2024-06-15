@@ -23,7 +23,10 @@ const Signup = () => {
       <Button
         onClick={async (event) => {
           const state = await handleClick(event);
-          if (state === 200) router.push("/auth/login");
+          if (state === 200) {
+            alert("회원가입 성공!");
+            router.push("/auth/login");
+          }
         }}
         className="bg-custom-orange w-500 h-12 text-white mt-14"
       >
