@@ -73,7 +73,10 @@ const ProductOrder: React.FC<ProductDetailsProps> = ({ product }) => {
           구매하기
         </Button>
         <Button
-          onClick={(e) => addCartLocal(e, product, count)}
+          onClick={(e) => {
+            addCartLocal(e, product, count);
+            alert("장바구니에 담았습니다.");
+          }}
           className="h-50 border border-black mt-5 rounded-none"
         >
           장바구니에 담기
