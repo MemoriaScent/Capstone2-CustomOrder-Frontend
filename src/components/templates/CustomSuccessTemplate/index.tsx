@@ -33,8 +33,6 @@ const CustomSuccessTemplate = async () => {
             imageFile
           );
 
-          console.log("---------------");
-
           const like = [];
           const hate = [];
 
@@ -50,7 +48,6 @@ const CustomSuccessTemplate = async () => {
                   like.push(key.toString());
                 } else if (value.Level === 0) {
                   console.log(key.toString());
-
                   hate.push(key.toString());
                 }
               }

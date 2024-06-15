@@ -1,9 +1,10 @@
 "use client";
+import setCustomDiffuser from "@/api/CustomDiffuser";
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
 import Keyword from "@/components/molecule/Keyword";
-import { useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import { customAtom } from "@/components/templates/CustomTemplate/JAtom";
+import { useAtomValue } from "jotai";
 
 interface CustomProps {
   complete: () => void;
@@ -11,6 +12,7 @@ interface CustomProps {
 }
 
 const Custom6: React.FC<CustomProps> = ({ complete, note }) => {
+  const custom = useAtomValue(customAtom);
   return (
     <div className="flex flex-col mt-60 items-center z-10">
       <Label className="text-center mb-2.5 textTest">
@@ -37,7 +39,23 @@ const Custom6: React.FC<CustomProps> = ({ complete, note }) => {
       </div>
       <Button
         className="w-300 h-50 bg-black text-white rounded-none mt-60"
-        onClick={complete}
+        onClick={async () => {
+          await setCustomDiffuser(custom.name, custom.image, 60000, note);
+          localStorage.setItem(
+            "selectedItems",
+            JSON.stringify([
+              {
+                count: 1,
+                product: {
+                  id: 1,
+                  Name: "Custom Diffuser -" + custom.name,
+                  Price: 60000,
+                },
+              },
+            ])
+          );
+          complete();
+        }}
       >
         향기 담기
       </Button>
