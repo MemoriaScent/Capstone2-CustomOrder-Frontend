@@ -1,4 +1,3 @@
-import ProductFilter from "@/components/molecule/ProductFilter";
 import ProductItem from "@/components/molecule/ProductItem";
 import React from "react";
 
@@ -18,8 +17,7 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
   return (
-    <div>
-      <ProductFilter></ProductFilter>
+    <>
       <div className="flex flex-row pt-10">
         {products.map(
           (
@@ -37,7 +35,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
           }
         )}
       </div>
-    </div>
+    </>
   );
 };
 

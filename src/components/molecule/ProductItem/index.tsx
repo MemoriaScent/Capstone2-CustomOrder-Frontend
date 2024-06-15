@@ -1,5 +1,7 @@
 "use client";
+import Box from "@/components/atoms/Box";
 import Button from "@/components/atoms/Button";
+import Image from "@/components/atoms/Image";
 import Label from "@/components/atoms/Label";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -25,15 +27,15 @@ const ProductItem: React.FC<ProductItemProps> = ({ id, name, price }) => {
         router.push(`/product/${id}`);
       }}
     >
-      <img src={`/product/product_${id}_1.png`}></img>
-      <div>
+      <Image src={`/product/product_${id}_1.png`}></Image>
+      <Box>
         <Label className="w-230 pretendardSemiBoldFont-20 text-start truncate hover:text-clip">
           {name}
         </Label>
         <Label className="pretendardNormalFont-20 text-start">
           {price.toLocaleString("ko-KR") + "원"}
         </Label>
-      </div>
+      </Box>
     </Button>
   );
 };

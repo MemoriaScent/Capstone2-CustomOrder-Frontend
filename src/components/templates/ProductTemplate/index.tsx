@@ -1,17 +1,25 @@
-import getProductData from "@/api/Product";
+import ProductFilter from "@/components/molecule/ProductFilter";
 import ProductList from "@/components/organism/ProductList";
+import React from "react";
 
-const ProductTemplate = async () => {
-  let products = await getProductData();
-  products = products.sort(
-    (
-      a: { id: number; Name: string; Price: number },
-      b: { id: number; Name: string; Price: number }
-    ) => a.id - b.id
-  );
-  console.log(products);
+interface ProductListProps {
+  products: {
+    map(
+      arg0: (
+        value: { id: number; Name: string; Price: number },
+        index: number
+      ) => React.ReactNode
+    ): React.ReactNode;
+    id: number;
+    Name: string;
+    Price: number;
+  };
+}
+
+const ProductTemplate: React.FC<ProductListProps> = ({ products }) => {
   return (
-    <div className="flex flex-col items-center mt-100">
+    <div className="flex flex-col items-start">
+      <ProductFilter></ProductFilter>
       <ProductList products={products}></ProductList>
     </div>
   );
