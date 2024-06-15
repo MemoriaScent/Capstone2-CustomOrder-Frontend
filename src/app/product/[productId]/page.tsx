@@ -1,14 +1,13 @@
-import ProductDetailPage from "@/components/pages/ProductDetailPage";
+import ProductDetailTemplate from "@/components/templates/ProductDetailTemplate";
 import ProductDetailsProps from "@/components/Types/productDetail";
 import React from "react";
 
-const ProductDetails: React.FC<ProductDetailsProps> = ({ params }) => {
-  console.log(params);
+const ProductDetailPage: React.FC<ProductDetailsProps> = ({ params }) => {
   return (
     <div>
-      <ProductDetailPage params={params}></ProductDetailPage>
+      <ProductDetailTemplate params={params}></ProductDetailTemplate>
     </div>
   );
 };
 
-export default ProductDetails;
+export default ProductDetailPage;

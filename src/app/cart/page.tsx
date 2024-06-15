@@ -1,11 +1,11 @@
-import CartInfoPage from "@/components/pages/CartPage";
+import CartInfoTemplate from "@/components/templates/CartTemplate";
 
-const CartInfo = () => {
-    return (
-        <div>
-            <CartInfoPage/>
-        </div>
-    );
+const CartInfoPage = () => {
+  return (
+    <div>
+      <CartInfoTemplate />
+    </div>
+  );
 };
 
-export default CartInfo;
+export default CartInfoPage;

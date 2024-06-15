@@ -1,10 +1,11 @@
-import ReviewDetPage from "@/components/pages/ReveiwDetPage";
-const ReviewDetail = () => {
-    return (
-      <div>
-        <ReviewDetPage/>
-      </div>
-    );
-  };
-  
-  export default ReviewDetail;
+import ReviewDetTemplate from "@/components/templates/ReviewDetTemplate";
+
+const ReviewDetPage = () => {
+  return (
+    <div>
+      <ReviewDetTemplate />
+    </div>
+  );
+};
+
+export default ReviewDetPage;

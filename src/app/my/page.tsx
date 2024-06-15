@@ -1,12 +1,12 @@
-import MyPage from "@/components/pages/MyPage";
+import MyTemplate from "@/components/templates/MyTemplate";
 import React from "react";
 
-const My = () => {
+const MyPage = () => {
   return (
     <div>
-      <MyPage></MyPage>
+      <MyTemplate></MyTemplate>
     </div>
   );
 };
 
-export default My;
+export default MyPage;

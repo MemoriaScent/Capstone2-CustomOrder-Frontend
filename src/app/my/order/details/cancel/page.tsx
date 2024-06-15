@@ -1,11 +1,11 @@
-import OderCancelPage from "@/components/pages/OderCancelPage";
+import OderCancelTemplate from "@/components/templates/OderCancelTemplate";
 
-const OderCancel = () => {
+const OderCancelPage = () => {
   return (
     <div>
-      <OderCancelPage></OderCancelPage>
+      <OderCancelTemplate></OderCancelTemplate>
     </div>
   );
 };
 
-export default OderCancel;
+export default OderCancelPage;

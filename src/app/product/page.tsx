@@ -1,11 +1,11 @@
-import ProductPage from "@/components/pages/ProductPage";
+import ProductTemplate from "@/components/templates/ProductTemplate";
 
-const ProductList = () => {
+const ProductPage = () => {
   return (
     <div>
-      <ProductPage></ProductPage>
+      <ProductTemplate></ProductTemplate>;
     </div>
   );
 };
 
-export default ProductList;
+export default ProductPage;

@@ -1,11 +1,11 @@
-import CompletePage from "@/components/pages/CompletePage";
+import CompleteTemplate from "@/components/templates/CompleteTemplate";
 
-const Complete = () => {
+const CompletePage = () => {
   return (
     <div>
-      <CompletePage></CompletePage>
+      <CompleteTemplate></CompleteTemplate>
     </div>
   );
 };
 
-export default Complete;
+export default CompletePage;

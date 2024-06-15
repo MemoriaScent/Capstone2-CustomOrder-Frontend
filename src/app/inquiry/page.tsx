@@ -1,11 +1,11 @@
-import InquiryPage from "@/components/pages/InquiryPage";
+import InquiryTemplate from "@/components/templates/InquiryTemplate";
 
-const Inquiry = () => {
-    return (
-      <div>
-        <InquiryPage/>
-      </div>
-    );
-  };
-  
-  export default Inquiry;
+const InquiryPage = () => {
+  return (
+    <div>
+      <InquiryTemplate />
+    </div>
+  );
+};
+
+export default InquiryPage;

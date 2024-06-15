@@ -1,11 +1,11 @@
-import ReviewPage from "@/components/pages/ReviewPage";
+import ReviewTemplate from "@/components/templates/ReviewTemplate";
 
-const Review = () => {
-    return (
-      <div>
-        <ReviewPage/>
-      </div>
-    );
-  };
-  
-  export default Review;
+const ReviewPage = () => {
+  return (
+    <div>
+      <ReviewTemplate />
+    </div>
+  );
+};
+
+export default ReviewPage;

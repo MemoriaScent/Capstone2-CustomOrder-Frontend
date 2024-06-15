@@ -1,11 +1,11 @@
-import CustomPage from "@/components/pages/CustomPage";
+import CustomTemplate from "@/components/templates/CustomTemplate";
 
-const Custom = () => {
+const CustomPage = () => {
   return (
     <div>
-      <CustomPage></CustomPage>
+      <CustomTemplate></CustomTemplate>
     </div>
   );
 };
 
-export default Custom;
+export default CustomPage;

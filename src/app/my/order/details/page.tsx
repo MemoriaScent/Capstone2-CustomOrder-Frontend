@@ -1,11 +1,11 @@
-import OderDetailsPage from "@/components/pages/OderDetailsPage";
+import OderDetailsTemplate from "@/components/templates/OderDetailsTemplate";
 
-const OderDetails = () => {
+const OderDetailsPage = () => {
   return (
     <div>
-      <OderDetailsPage></OderDetailsPage>
+      <OderDetailsTemplate></OderDetailsTemplate>
     </div>
   );
 };
 
-export default OderDetails;
+export default OderDetailsPage;

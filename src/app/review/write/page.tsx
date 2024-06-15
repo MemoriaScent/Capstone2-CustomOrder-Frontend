@@ -1,10 +1,10 @@
-import ReviewWritePage from "@/components/pages/reviewWritePage";
-const ReviewWrite = () => {
-    return (
-      <div>
-        <ReviewWritePage/>
-      </div>
-    );
-  };
-  
-  export default ReviewWrite;
+import ReviewWriteTemplate from "@/components/templates/ReviewWriteTemplate";
+const ReviewWritePage = () => {
+  return (
+    <div>
+      <ReviewWriteTemplate />
+    </div>
+  );
+};
+
+export default ReviewWritePage;

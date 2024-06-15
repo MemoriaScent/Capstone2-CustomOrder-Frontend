@@ -42,13 +42,10 @@ const CustomSuccessTemplate = async () => {
 
             for (const key in dataObject) {
               if (dataObject.hasOwnProperty(key)) {
-                console.log(`0 ${key} `);
                 const value = dataObject[key];
                 if (value.Level === 2) {
-                  console.log(key.toString());
                   like.push(key.toString());
                 } else if (value.Level === 0) {
-                  console.log(key.toString());
                   hate.push(key.toString());
                 }
               }

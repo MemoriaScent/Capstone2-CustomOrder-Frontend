@@ -1,11 +1,11 @@
-import AccountPage from "@/components/pages/AccountPage";
+import AccountTemplate from "@/components/templates/AccountTemplate";
 
-const Account = () => {
+const AccountPage = () => {
   return (
     <div>
-      <AccountPage></AccountPage>
+      <AccountTemplate></AccountTemplate>
     </div>
   );
 };
 
-export default Account;
+export default AccountPage;

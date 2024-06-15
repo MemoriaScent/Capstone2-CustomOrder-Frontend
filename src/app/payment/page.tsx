@@ -1,11 +1,11 @@
-import PayMentPage from "@/components/pages/PayMentPage";
+import PayMentTemplate from "@/components/templates/PayMentTemplate";
 
-const PayMent = () => {
+const PayMentPage = () => {
   return (
     <div>
-      <PayMentPage></PayMentPage>
+      <PayMentTemplate></PayMentTemplate>
     </div>
   );
 };
 
-export default PayMent;
+export default PayMentPage;

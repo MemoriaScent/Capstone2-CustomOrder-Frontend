@@ -1,11 +1,11 @@
-import OderPage from "@/components/pages/OderPage";
+import OderTemplate from "@/components/templates/OderTemplate";
 
-const Oder = () => {
+const OderPage = () => {
   return (
     <div>
-      <OderPage></OderPage>
+      <OderTemplate></OderTemplate>
     </div>
   );
 };
 
-export default Oder;
+export default OderPage;

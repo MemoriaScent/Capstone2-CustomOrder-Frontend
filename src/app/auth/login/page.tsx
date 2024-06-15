@@ -1,12 +1,12 @@
-import LoginPage from "@/components/pages/LoginPage";
+import LoginTemplate from "@/components/templates/LoginTemplate";
 import React from "react";
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <div>
-      <LoginPage />
+      <LoginTemplate />
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;
