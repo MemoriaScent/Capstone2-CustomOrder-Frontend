@@ -43,10 +43,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({
         paymentWidgetRef.current = paymentWidget;
       }
 
-      /**
-       * 결제창을 렌더링합니다.
-       * @docs https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods%EC%84%A0%ED%83%9D%EC%9E%90-%EA%B2%B0%EC%A0%9C-%EA%B8%88%EC%95%A1
-       */
+      // 결제창을 렌더링합니다.
       const paymentMethodsWidget =
         paymentWidgetRef.current.renderPaymentMethods(
           "#payment-method",
@@ -54,10 +51,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({
           { variantKey: "DEFAULT" }
         );
 
-      /**
-       * 약관을 렌더링합니다.
-       * @docs https://docs.tosspayments.com/reference/widget-sdk#renderagreement%EC%84%A0%ED%83%9D%EC%9E%90-%EC%98%B5%EC%85%98
-       */
+      // 약관을 렌더링합니다.
       agreementWidgetRef.current = paymentWidgetRef.current.renderAgreement(
         "#agreement",
         { variantKey: "DEFAULT" }
@@ -84,15 +78,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({
                 const paymentWidget = paymentWidgetRef.current;
 
                 try {
-                  /**
-                   * 결제 요청
-                   * @docs https://docs.tosspayments.com/reference/widget-sdk#requestpayment%EA%B2%B0%EC%A0%9C-%EC%A0%95%EB%B3%B4
-                   */
+                  // 결제 요청
                   await paymentWidget?.requestPayment({
                     orderId: generateRandomString(),
-                    orderName, // "토스 티셔츠 외 2건",
-                    customerName, // "김토스"
-                    customerEmail, // "customer123@gmail.com",
+                    orderName,
+                    customerName,
+                    customerEmail,
                     successUrl:
                       window.location.origin +
                       "/payment/success" +

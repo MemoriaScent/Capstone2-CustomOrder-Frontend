@@ -7,7 +7,6 @@ import Amount from "@/components/molecule/Amount";
 import Items from "@/components/molecule/Items";
 import PaySelect from "@/components/molecule/PaySelect";
 import CheckoutPage from "@/components/pages/checkout";
-import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 const Payment = () => {
