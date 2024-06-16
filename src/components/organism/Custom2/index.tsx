@@ -61,7 +61,7 @@ const Custom2: React.FC<CustomProps> = ({ nextLevel }) => {
           ref={fileInput}
         ></input>
         <Button
-          className="w-300 h-50 bg-black text-white rounded-none mb-4"
+          className="w-300 h-50 bg-black text-white rounded-none mb-4 pretendardNormalFont-18"
           onClick={() => {
             fileInput.current?.click();
             setImageUpload(true);

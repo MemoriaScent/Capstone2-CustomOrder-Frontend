@@ -14,7 +14,7 @@ const Custom3: React.FC<CustomProps> = ({ nextLevel }) => {
   const [story, setStory] = useState<string>("");
   const [custom, setCustom] = useAtom(customAtom);
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setStory(event.target.value);
   };
 
@@ -23,11 +23,11 @@ const Custom3: React.FC<CustomProps> = ({ nextLevel }) => {
       <Label className="text-center textTest">
         항기에 담고 싶은 내용을 이야기해주세요
       </Label>
-      <Input
-        className="w-700 h-250 border border-black rounded-none p-4 my-50 pretendardNormalFont-20"
-        type="textarea"
+      <textarea
+        className="w-700 h-250 border border-black rounded-none p-4 my-50 pretendardNormalFont-20 text-wrap"
+        value={story}
         onChange={onChange}
-      ></Input>
+      ></textarea>
       <Button
         className="w-300 h-50 bg-black text-white rounded-none mb-4 pretendardNormalFont-18"
         onClick={() => {

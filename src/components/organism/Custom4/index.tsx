@@ -14,7 +14,7 @@ const Custom4: React.FC<CustomProps> = ({ nextLevel }) => {
   const [taste, setTaste] = useState<string>("");
   const [custom, setCustom] = useAtom(customAtom);
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTaste(event.target.value);
   };
   return (
@@ -22,11 +22,12 @@ const Custom4: React.FC<CustomProps> = ({ nextLevel }) => {
       <Label className="text-center textTest">
         당신의 향기 취향에 대해 이야기해주세요
       </Label>
-      <Input
-        className="w-700 h-250 border border-black rounded-none p-4 my-50 pretendardNormalFont-20"
-        type="textarea"
+
+      <textarea
+        className="w-700 h-250 border border-black rounded-none p-4 my-50 pretendardNormalFont-20 text-wrap"
+        value={taste}
         onChange={onChange}
-      ></Input>
+      ></textarea>
       <Button
         className="w-300 h-50 bg-black text-white rounded-none mb-4 pretendardNormalFont-18"
         onClick={() => {
