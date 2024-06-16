@@ -17,7 +17,7 @@ const Custom2: React.FC<CustomProps> = ({ nextLevel }) => {
   );
   const [custom, setCustom] = useAtom(customAtom);
   const [imageFile, setImageFile] = useAtom(gptImageFileAtom);
-
+  const [imageUpload, setImageUpload] = useState<boolean>(false);
   const fileInput = useRef<HTMLInputElement>(null);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // 업로드 된 파일 받아옴
@@ -64,15 +64,16 @@ const Custom2: React.FC<CustomProps> = ({ nextLevel }) => {
           className="w-300 h-50 bg-black text-white rounded-none mb-4"
           onClick={() => {
             fileInput.current?.click();
+            setImageUpload(true);
           }}
         >
           사진 업로드 하기
         </Button>
         <Button
-          className="w-300 h-50 bg-white text-black rounded-none border border-black"
+          className="w-300 h-50 bg-white text-black rounded-none border border-black pretendardNormalFont-18"
           onClick={nextLevel}
         >
-          건너뛰기
+          {imageUpload ? "다음" : "건너뛰기"}
         </Button>
       </div>
     </div>

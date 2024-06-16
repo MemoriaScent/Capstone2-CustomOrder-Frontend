@@ -10,7 +10,7 @@ interface CustomProps {
 const Custom1: React.FC<CustomProps> = ({ nextLevel }) => {
   return (
     <div className="mt-180 z-10">
-      <Label className="text-center mb-110">
+      <Label className="text-center mb-110 pretendardNormalFont-20">
         커스텀 디퓨저는 향기 인증 절차를 밟은 후 배송되는 제품으로 <br />
         제작부터 배송까지 약 4주 정도의 시간이 소요됩니다.
         <br />
@@ -18,14 +18,14 @@ const Custom1: React.FC<CustomProps> = ({ nextLevel }) => {
       </Label>
       <div className="flex flex-col items-center">
         <Button
-          className="w-300 h-50 bg-black text-white rounded-none mb-4"
+          className="w-300 h-50 bg-black text-white rounded-none mb-4 pretendardNormalFont-18"
           onClick={nextLevel}
         >
           네
         </Button>
         <Button
           onClick={() => {}}
-          className="w-300 h-50 bg-white text-black rounded-none border border-black"
+          className="w-300 h-50 bg-white text-black rounded-none border border-black pretendardNormalFont-18"
         >
           아니요
         </Button>
